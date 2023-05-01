@@ -1,0 +1,16 @@
+library(shiny)
+library(shinyjs)
+
+ui <- fluidPage(
+  useShinyjs(),
+  h1("This is my heading", id = "myheading"),
+  actionButton("togglebutton", "Show/Hide Heading")
+)
+
+server <- function(input, output) {
+  observeEvent(input$togglebutton, {
+    shinyjs::toggle("myheading")
+  })
+}
+
+shinyApp(ui, server)
