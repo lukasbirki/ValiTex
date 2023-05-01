@@ -8,5 +8,6 @@ This application generates an adaptable checklist in R-Shiny that you can use to
 - Supervised: Machine-learning methods that include some form of training data and test set and/or classification task (e.g., SVM, BERT)
 - Unsupervised (Topic Model): Unsupervised methods that generate topis based on word-coocurrences (e.g., LDA)
 - Unsupervised (Text Scaling) Unsupervised methods that produce scores that relate to some underlying scale based on word-coocurrences (e.g., Wordfish, Wordscores)
+
 Please start by choosing a method from the drop-down menue below. The complete list of validation steps is also available on [Github](https://github.com/lukasbirki/ValiTex-Checklist/tree/main/data)
 
