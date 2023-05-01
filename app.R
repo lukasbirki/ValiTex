@@ -40,8 +40,18 @@ ui <- fluidPage(theme = "flatly",
                 p("This checklist accompanies the ", tags$a(href="https://lukasbirki.github.io/",target="_blank", 
                         "ValiTex"),"framework for validating text-based measures of social science constructs by Birkenmaier et al. (2023 forthcoming). 
                   The framework provides clear guidelines for best practices in validation, with a normative stance on what constitutes good validation evidence."),
-                h4("Theoretical Background ", span(style = "font-weight:normal;"), span("(Show more
-)", style = "background-color: #eff0eb; border-radius: 5px; padding: 0px 5px;"), span(style = "font-weight:normal;"), p(class = "collapsible-arrow"), id = "heading1", style = "cursor:pointer"),
+                h4(
+                  "Theoretical Background ",
+                  span(
+                    style = "font-size: 11px;font-weight:normal;align-items: center;",
+                    "Show more",
+                    style = "background-color: #f2f2f2; border: 1px solid #808080; border-radius: 5px; padding: 0px 5px;"
+                  ),
+                  span(style = "font-weight:normal;"),
+                  p(class = "collapsible-arrow"),
+                  id = "heading1",
+                  style = "cursor:pointer"
+                ),
                 div(id = "content1", style = "display:none;", 
                 p("Conceputally, the framework adheres to three methodlogical principles:"),
                 tags$ol(type = "1",
