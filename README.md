@@ -1,8 +1,8 @@
-## ValiTex Checklist for text-based measures of social science constructs
-This checklist accompanies the ValiTex framework for validating text-based measures of social science constructs by Birkenmaier et al. (2023 forthcoming). The framework provides clear guidelines for best practices in validation, with a normative stance on what constitutes good validation evidence.
+# ValiTex Checklist 
+This checklist accompanies the [ValiTex](https://lukasbirki.shinyapps.io/ValiTex/) framework for validating text-based measures of social science constructs by Birkenmaier et al. (2023 forthcoming). The framework provides clear guidelines for best practices in validation, with a normative stance on what constitutes good validation evidence. For a detailed explanation, please refer to the description in Birkenmaier et al. (2023 forthcoming) or the "Theoretical Background" section in the webpage.
 
 ## User Instructions
-This application generates an adaptable checklist that you can use to validate your text-based measures. Each row within the table corresponds to one validation step (i.e., a single reported and clearly demarcated validation activity). Validation steps can be either mandatory or optional depending on their relevance:
+This application generates an adaptable checklist in R-Shiny that you can use to validate your text-based measures. Each row within the table corresponds to one validation step (i.e., a single reported and clearly demarcated validation activity). Validation steps can be either mandatory or optional depending on their relevance:
 
 - Dictionary: Rule-based methods that include words or phrases along with their respective meanings or sentiments (e.g., SentiWS)
 - Supervised: Machine-learning methods that include some form of training data and test set and/or classification task (e.g., SVM, BERT)
