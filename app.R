@@ -104,8 +104,7 @@ ui <- fluidPage(theme = "flatly",
                   $('#Method option[value=\"\"]').remove();
                 }
               });
-            "),
-                            conditionalPanel(
+            "), conditionalPanel(
                               tags$style(HTML('.group {background-color: #ccc !important;}')),
                               condition = "input.Method != ''",  # Only show table when Method input is not empty
                               downloadButton("downloadData", "Download",
@@ -127,7 +126,10 @@ ui <- fluidPage(theme = "flatly",
       padding-right: 50px;
       padding-bottom: 100px;
     }
-  ")
+  "), p(""),
+                tags$b("References"),
+                p("Birkenmaier, Lukas: Lechner, Clemens; Wagner, Claudia.(forthcomming) Navigating the complexities of validation in text as data – A novel validation framework ValiTex and applying it to detect sexisms in social media post"),
+                p("Loevinger, Jane. Objective tests as instruments of psychological theory. Psychological reports 3.3 (1957): 635-694."),
 )
 
 server <- function(input, output) {
