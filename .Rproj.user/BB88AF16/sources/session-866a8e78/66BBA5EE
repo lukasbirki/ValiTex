@@ -3,7 +3,7 @@
     "path": "C:/Users/birkenls/OneDrive - GESIS – Leibniz-Institut für Sozialwissenschaften e.V/Projekte Phd/1_Papers/Framework Paper Validity/Shiny App/app.R",
     "project_path": "app.R",
     "type": "r_source",
-    "hash": "2390679213",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1682426421289.0,
@@ -16,11 +16,11 @@
         "scrollLine": "87"
     },
     "folds": "",
-    "lastKnownWriteTime": 1682700001,
+    "lastKnownWriteTime": 1682938667,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1682700001589,
+    "last_content_update": 1682938667,
     "read_only": false,
     "read_only_alternatives": []
 }

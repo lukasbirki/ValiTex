@@ -65,7 +65,7 @@ ui <- fluidPage(theme = "flatly",
                 ),
                 
                 tags$p(tags$b("Please start by choosing a method from the drop-down menue below."), "The complete list of validation steps is also available on ",
-                       tags$a(href="https://lukasbirki.github.io/",target="_blank", 
+                       tags$a(href="https://github.com/lukasbirki/ValiTex-Checklist/tree/main/data",target="_blank", 
                               "Github")),
                 
                 
@@ -127,7 +127,9 @@ server <- function(input, output) {
       dplyr::filter(!!sym(input$Method) != "n.a.") %>%
       dplyr::rename(Status = input$Method, "Validity Dimension" = "Dimension") %>%
       dplyr::mutate(Phase = factor(Phase, levels = c("Substantive Phase", "Structural Phase", "External Phase", "Continuous Evaluation: Robustness Checks"))) |> 
-      mutate(" " = '<input type="checkbox" name="select_row">', .before = 1) %>% 
+      mutate(" " = '<input type="checkbox" name="select_row">', .before = 1) -> df_output
+    
+    df_output |> 
       datatable(
         rownames = FALSE,
         escape = FALSE,
@@ -161,7 +163,9 @@ server <- function(input, output) {
         "Status",
         valueColumns = "Status",
         backgroundColor = styleEqual(c("Mandatory", "Optional"), c("#f8d7da", "#d7ebf8")),
-        justifyContent = "center"
+        justifyContent = "center",
+        backgroundOpacity = 0
+        
       )
   })
   selected_option <- reactive({
@@ -174,11 +178,19 @@ server <- function(input, output) {
   # Downloadable csv of selected dataset ----
   output$downloadData <- downloadHandler(
     filename = function() {
-      paste("checklist_validity", ".csv", sep = "")
+      paste("checklist_validity_",tolower(as.character(input$Method)), ".csv", sep = "")
     },
     content = function(file) {
-      write.csv(df, file, row.names = FALSE)
-    }
+      write.csv(
+        #same filtering as above
+        df %>%
+          dplyr::select(Phase, `Validation Step`, input$Method,Metric, Dimension) %>%
+          dplyr::filter(!!sym(input$Method) != "n.a.") %>%
+          dplyr::rename(Status = input$Method, "Validity Dimension" = "Dimension") |> 
+          dplyr::mutate(Check = "",.before = 1) |> 
+          dplyr::mutate("Comments / Justification" = "",.after = 6) 
+        , file, row.names = FALSE
+          ) }
   )
   
 }
