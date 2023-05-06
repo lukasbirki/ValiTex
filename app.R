@@ -23,7 +23,7 @@ ui <- fluidPage(theme = "flatly",
     ")),
                 
                 # App title ----
-                titlePanel(tags$b(tags$h1("ValiTex Checklist"))),
+                titlePanel(tags$b(tags$h1("ValiTex Checklist (Beta version 0.9)"))),
                 # Subtitle and Remarks ----
                 tags$style(HTML("
                 .collapsible-arrow {
@@ -53,22 +53,19 @@ ui <- fluidPage(theme = "flatly",
                   style = "cursor:pointer"
                 ),
                 p("Computational methods to analyse textual data require careful validation (Grimmer and Stewart, 2013; Grimmer et al., 2022). However, social science researchers
-                  often lack common terminology and a unified framework that provides guidance to do so. We present a novel validation framework for text analysis (ValiTex) that guides scholars who aim to measure relevant constructs based on textual data [...]."),
+                  often lack common terminology and a unified framework that provides guidance to do so. We present a novel validation framework for text analysis (ValiTex) that guides scholars who aim to measure social science constructs based on textual data [...]."),
                 div(id = "content1", style = "display:none;", 
                 p("Conceptually, the framework adheres to three methodlogical principles:"),
                 tags$ol(type = "1",
                   tags$li("Validation steps should be organized across the key phases of the validation process (substantive, structural, and external) as outlined in the psychometric tradition (Loevinger 1957)."),
-                  tags$li("While some validation steps within each phase are optional and can be considered based on the specific circumstances, others are mandatory This is because each single type of validation step comes with its own limitations, so that a combination of complementary validation steps is needed to combine the strength of different validation types."),
+                  tags$li("While some validation steps within each phase are optional and can be considered based on the specific circumstances, others are recommended This is because each single type of validation step comes with its own limitations, so that a combination of complementary validation steps is needed to combine the strength of different validation types."),
                   tags$li("Sufficient validation should include continuous evaluation of the measure’s robustness towards researchers' degree of freedom.")),
-                p("The figure below plots the conceptual overview of the ValiTex framework. For a detailed explanation, please refer to the description in Birkenmaier et al. (2023 forthcoming)."),
-                tags$img(src = "framework.png", id = "myimage",style = "margin-top: 40px;margin-bottom: 40px")
-                
-                ),
-                
+                p("The figure below plots the conceptual model of the ValiTex framework. For a detailed explanation, please refer to the description in Birkenmaier et al. (2023 forthcoming)."),
+                tags$img(src = "framework.png", id = "myimage",style = "margin-top: 40px;margin-bottom: 40px")),
                 h4("User Instructions"),
                 p(HTML(paste("This application generates an adaptable checklist that you can use to validate your text-based measures. 
                 Each row within the table corresponds to one validation step (i.e., a single reported and clearly demarcated validation activity). Validation steps can be either ", 
-                span(style="color:#ed969e; font-weight: bold", "mandatory "), "or ", 
+                span(style="color:#ed969e; font-weight: bold", "recommended "), "or ", 
                 span(style="color:#96caed; font-weight: bold", "optional "),"depending on their relevance", sep = ""),". As outlined in the corresponding paper, researchers should initially follow the order of the phases, starting with the substantive validation steps and ending with external validation steps while continuously considering robustness checks. 
                 However, reserachers might adapt this process to their individual use case."),
                 p("ValiTex accounts for differences in validation pracices across text-based methods and research contexts. At present, ValiTex differentiates between four broad types of text-based methods:"),
@@ -90,7 +87,7 @@ ui <- fluidPage(theme = "flatly",
                                
                                # Input: Choose dataset ----
                                selectInput("Method", "What text-based method do you want to validate? Please choose below:",
-                                           choices = c("","Dictionary","Supervised", "Unsupervised: Topic Model", "Unsupervised: Text Scaling"),
+                                           choices = c("--Please select a method--","Dictionary","Supervised", "Unsupervised: Topic Model", "Unsupervised: Text Scaling"),
                                            selected = ""),
                                
                                
@@ -108,7 +105,7 @@ ui <- fluidPage(theme = "flatly",
               });
             "), conditionalPanel(
                               tags$style(HTML('.group {background-color: #ccc !important;}')),
-                              condition = "input.Method != ''",  # Only show table when Method input is not empty
+                              condition = "input.Method != '--Please select a method--'",  # Only show table when Method input is not empty
                               downloadButton("downloadData", "Download",
                                              style = "float: right; margin-left: 10px;"),
                               tags$h5(HTML(paste("Your selected text method is:",tags$b(tags$span(textOutput("value")), style = "display:inline-block;")), sep = "")),
@@ -138,9 +135,9 @@ server <- function(input, output) {
   shinyjs::runjs("$('#heading1').click(function() { $('#content1').toggle(); })")
   output$table <- renderDT({
     df %>%
-      dplyr::select(Phase, `Validation Step`, input$Method,Metric, Dimension) %>%
+      dplyr::select(Phase, `Validation Step`, input$Method,Considerations,"Performance Criteria") %>%
       dplyr::filter(!!sym(input$Method) != "n.a.") %>%
-      dplyr::rename(Status = input$Method, "Validity Dimension" = "Dimension") %>%
+      dplyr::rename(Status = input$Method) %>%
       dplyr::mutate(Phase = factor(Phase, levels = c("Substantive Phase", "Structural Phase", "External Phase", "Continuous Evaluation: Robustness Checks"))) |> 
       mutate(" " = '<input type="checkbox" name="select_row">', .before = 1) -> df_output
     
@@ -177,7 +174,7 @@ server <- function(input, output) {
       formatStyle(
         "Status",
         valueColumns = "Status",
-        backgroundColor = styleEqual(c("Mandatory", "Optional"), c("#f8d7da", "#d7ebf8")),
+        backgroundColor = styleEqual(c("Recommended", "Optional"), c("#f8d7da", "#d7ebf8")),
         justifyContent = "center",
         backgroundOpacity = 0
         
@@ -199,7 +196,7 @@ server <- function(input, output) {
       writexl::write_xlsx(x = 
         #same filtering as above
         df %>%
-          dplyr::select(Phase, `Validation Step`, input$Method,Metric, Dimension) %>%
+          dplyr::select(Phase, `Validation Step`, input$Method,"Performance Criteria", Dimension) %>%
           dplyr::filter(!!sym(input$Method) != "n.a.") %>%
           dplyr::rename(Status = input$Method, "Validity Dimension" = "Dimension") |> 
           dplyr::mutate(Check = "",.before = 1) |> 
