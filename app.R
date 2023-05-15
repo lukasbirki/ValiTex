@@ -5,7 +5,7 @@ library(DT)
 library(shinythemes)
 library(shinyjs)
 
-df <- readxl::read_excel("data/Framework_2.xlsx")
+df <- readxl::read_excel("data/Framework.xlsx")
 
 ui <- fluidPage(theme = "flatly",
                 useShinyjs(),
@@ -13,7 +13,7 @@ ui <- fluidPage(theme = "flatly",
                 tags$style(
                   HTML("
       #myimage {
-        max-width: 90%;
+        max-width: 85%;
         height: auto;
           display: block;
   margin-left: auto;
