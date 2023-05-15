@@ -5,7 +5,7 @@ library(DT)
 library(shinythemes)
 library(shinyjs)
 
-df <- readxl::read_excel("data/Framework.xlsx")
+df <- readxl::read_excel("data/Framework_2.xlsx")
 
 ui <- fluidPage(theme = "flatly",
                 useShinyjs(),
@@ -13,7 +13,7 @@ ui <- fluidPage(theme = "flatly",
                 tags$style(
                   HTML("
       #myimage {
-        max-width: 50%;
+        max-width: 90%;
         height: auto;
           display: block;
   margin-left: auto;
@@ -37,7 +37,7 @@ ui <- fluidPage(theme = "flatly",
                   cursor: pointer;
                 }
                 ")),
-                p("This checklist accompanies the ", tags$a(href="https://lukasbirki.github.io/",target="_blank", 
+                p("This checklist accompanies the ", tags$a(href="https://github.com/lukasbirki/ValiTex-Checklist",target="_blank", 
                         "ValiTex"),"framework for validating text-based measures of social science constructs by Birkenmaier et al. (2023 forthcoming). 
                   The framework provides clear guidelines for best practices in validation, with a normative stance on what constitutes good validation evidence."),
                 h4(
