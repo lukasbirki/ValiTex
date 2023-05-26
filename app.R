@@ -12,15 +12,37 @@ ui <- fluidPage(theme = "flatly",
                 
                 tags$style(
                   HTML("
-      #myimage {
-        max-width: 85%;
-        height: auto;
-          display: block;
-  margin-left: auto;
-  margin-right: auto;
-        
+    body {
+      padding: 20px; /* Add padding to the outer area */
+    }
+
+    #myimage {
+      max-width: 85%;
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 600px) {
+      .adaptive-paragraph {
+        max-width: 50%;
       }
-    ")),
+    }
+
+    @media (min-width: 601px) {
+      .adaptive-paragraph {
+        max-width: 50ch;
+        overflow-wrap: break-word;
+      }
+    }
+
+    p {
+      max-width: 50ch; /* Set the maximum number of characters to 50 for a line */
+      overflow-wrap: break-word;
+    }
+  ")
+                ),
                 
                 # App title ----
                 titlePanel(tags$b(tags$h1("ValiTex Checklist (Beta version 0.9)"))),
