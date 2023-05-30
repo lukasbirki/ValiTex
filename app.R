@@ -12,37 +12,18 @@ ui <- fluidPage(theme = "flatly",
                 
                 tags$style(
                   HTML("
-    body {
-      padding: 20px; /* Add padding to the outer area */
-    }
-
-    #myimage {
-      max-width: 85%;
-      height: auto;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    @media (max-width: 600px) {
-      .adaptive-paragraph {
-        max-width: 50%;
+      #myimage {
+        max-width: 30%;
+        height: auto;
+          display: block;
+  margin-left: auto;
+  margin-right: auto;
       }
-    }
-
-    @media (min-width: 601px) {
-      .adaptive-paragraph {
-        max-width: 50ch;
-        overflow-wrap: break-word;
+      .caption {
+        text-align: center;
+        font-style: italic;
       }
-    }
-
-    p {
-      max-width: 50ch; /* Set the maximum number of characters to 50 for a line */
-      overflow-wrap: break-word;
-    }
-  ")
-                ),
+    ")),
                 
                 # App title ----
                 titlePanel(tags$b(tags$h1("ValiTex Checklist (Beta version 0.9)"))),
@@ -63,32 +44,21 @@ ui <- fluidPage(theme = "flatly",
                         "ValiTex"),"framework for validating text-based measures of social science constructs by Birkenmaier et al. (2023 forthcoming). 
                   The framework provides clear guidelines for best practices in validation, with a normative stance on what constitutes good validation evidence."),
                 h4(
-                  "Theoretical Background ",
-                  span(
-                    style = "font-size: 11px;font-weight:normal;align-items: center;",
-                    "Show more/less",
-                    style = "background-color: #f2f2f2; border: 1px solid #808080; border-radius: 5px; padding: 0px 5px;"
-                  ),
-                  span(style = "font-weight:normal;"),
-                  p(class = "collapsible-arrow"),
-                  id = "heading1",
-                  style = "cursor:pointer"
-                ),
+                  "Conceptual Background "),
                 p("Computational methods to analyse textual data require careful validation (Grimmer and Stewart, 2013; Grimmer et al., 2022). However, social science researchers
-                  often lack common terminology and a unified framework that provides guidance to do so. We present a novel validation framework for text analysis (ValiTex) that guides scholars who aim to measure social science constructs based on textual data [...]."),
-                div(id = "content1", style = "display:none;", 
-                p("Conceptually, the framework adheres to three methodlogical principles:"),
+                  often lack common terminology and a unified framework that provides guidance to do so. We present a novel validation framework for text analysis (ValiTex) that guides scholars who aim to measure social science constructs based on textual data. Conceptuall, the framework concists of two components:"),
                 tags$ol(type = "1",
-                  tags$li("Validation steps should be organized across the key phases of the validation process (substantive, structural, and external) as outlined in the psychometric tradition (Loevinger 1957)."),
-                  tags$li("While some validation steps within each phase are optional and can be considered based on the specific circumstances, others are recommended This is because each single type of validation step comes with its own limitations, so that a combination of complementary validation steps is needed to combine the strength of different validation types."),
-                  tags$li("Sufficient validation should include continuous evaluation of the measure’s robustness towards researchers' degree of freedom.")),
-                p("The figure below plots the conceptual model of the ValiTex framework. For a detailed explanation, please refer to the description in Birkenmaier et al. (2023 forthcoming)."),
-                tags$img(src = "framework.png", id = "myimage",style = "margin-top: 40px;margin-bottom: 40px")),
-                h4("User Instructions"),
+                  tags$li(tags$b("Conceptual Model:"),"provides a general structure along distinct phases on how to approach validation for text-based measures of social science constructs (see Figure 1, click to expand)"),
+                  tags$li(tags$b("Dynamic Checklist:"),"defines and specifies specific validation steps and provides guidance on which steps are considered recommendable or optional"),),
+                p("For a detailed introduction into the theoretical background of the framework, please refer to the paper [Link to preprint]"),
+                div(
+                  tags$img(src = "framework.png", id = "myimage", style = "margin-top: 40px;margin-bottom: 40px; cursor: pointer;"),
+                  p(class = "caption", "Figure 1: Conceptual Model (cklick to expand)")
+                ),                h4("User Instructions for the checklist"),
                 p(HTML(paste("This application generates an adaptable checklist that you can use to validate your text-based measures. 
                 Each row within the table corresponds to one validation step (i.e., a single reported and clearly demarcated validation activity). Validation steps can be either ", 
                 span(style="color:#ed969e; font-weight: bold", "recommended "), "or ", 
-                span(style="color:#96caed; font-weight: bold", "optional "),"depending on their relevance", sep = ""),". As outlined in the corresponding paper, researchers should initially follow the order of the phases, starting with the substantive validation steps and ending with external validation steps while continuously considering robustness checks. 
+                span(style="color:#96caed; font-weight: bold", "optional "),"depending on their relevance.", sep = ""),"As outlined in the corresponding paper, researchers should initially follow the order of the phases, starting with the substantive validation steps and ending with external validation steps while continuously considering robustness checks. 
                 However, reserachers might adapt this process to their individual use case."),
                 p("ValiTex accounts for differences in validation pracices across text-based methods and research contexts. At present, ValiTex differentiates between four broad types of text-based methods:"),
                 tags$ul(tags$li(tags$b("Dictionary:"),"Rule-based methods that include words or phrases along with their respective meanings or sentiments (e.g., SentiWS)"),
@@ -98,7 +68,7 @@ ui <- fluidPage(theme = "flatly",
                 ),
                 tags$p(tags$b("Please start by choosing a method from the drop-down menue below."), "The complete list of validation steps is also available on ",
                        tags$a(href="https://github.com/lukasbirki/ValiTex-Checklist/tree/main/data",target="_blank", 
-                              "Github")),
+                              "Github.")),
 
                 
                 # Sidebar layout with input and output definitions ----
@@ -117,15 +87,18 @@ ui <- fluidPage(theme = "flatly",
                   ),
                   
                   # Main panel for displaying outputs ----
-                  mainPanel(width = 12,
-                            tags$script("
-              $(document).on('shiny:inputchanged', function(event) {
-                if (event.name === 'Method') {
-                  // Remove the default option after the user makes a selection
-                  $('#Method option[value=\"\"]').remove();
-                }
-              });
-            "), conditionalPanel(
+                  mainPanel(width = 12, 
+                            tags$script('
+  $(document).on("click", "#myimage", function() {
+    if ($(this).hasClass("expanded")) {
+      $(this).removeClass("expanded");
+      $(this).css("max-width", "30%");
+    } else {
+      $(this).addClass("expanded");
+      $(this).css("max-width", "90%");
+    }
+  });
+'),conditionalPanel(
                               tags$style(HTML('.group {background-color: #ccc !important;}')),
                               condition = "input.Method != '--Please select a method--'",  # Only show table when Method input is not empty
                               downloadButton("downloadData", "Download",
