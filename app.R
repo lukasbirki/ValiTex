@@ -20,9 +20,19 @@ ui <- fluidPage(theme = "flatly",
   margin-right: auto;
       }
       .caption {
-        text-align: center;
-        font-style: italic;
-      }
+        text-align: center; font-style: italic; font-size: 18px;}
+      body {
+                    font-size: 16px;
+                  }
+                                    .group {
+                    font-size: 20px;
+                  }
+                  .dataTables_wrapper .dataTables_paginate .paginate_button {
+                    font-size: 15x;
+                  }
+                   .dataTables_wrapper .dataTables_scrollHeadInner table.dataTable thead th {
+                    font-size: 16px;
+                  }
     ")),
                 
                 # App title ----
@@ -53,13 +63,13 @@ ui <- fluidPage(theme = "flatly",
                 p("For a detailed introduction into the theoretical background of the framework, please refer to the paper [Link to preprint]"),
                 div(
                   tags$img(src = "framework.png", id = "myimage", style = "margin-top: 40px;margin-bottom: 40px; cursor: pointer;"),
-                  p(class = "caption", "Figure 1: Conceptual Model (cklick to expand)")
+                  p(class = "caption", "Figure 1: Conceptual Model (click to expand)")
                 ),                h4("User Instructions for the checklist"),
                 p(HTML(paste("This application generates an adaptable checklist that you can use to validate your text-based measures. 
                 Each row within the table corresponds to one validation step (i.e., a single reported and clearly demarcated validation activity). Validation steps can be either ", 
                 span(style="color:#ed969e; font-weight: bold", "recommended "), "or ", 
                 span(style="color:#96caed; font-weight: bold", "optional "),"depending on their relevance.", sep = ""),"As outlined in the corresponding paper, researchers should initially follow the order of the phases, starting with the substantive validation steps and ending with external validation steps while continuously considering robustness checks. 
-                However, reserachers might adapt this process to their individual use case."),
+                However, researchers might adapt this process to their individual use case."),
                 p("ValiTex accounts for differences in validation pracices across text-based methods and research contexts. At present, ValiTex differentiates between four broad types of text-based methods:"),
                 tags$ul(tags$li(tags$b("Dictionary:"),"Rule-based methods that include words or phrases along with their respective meanings or sentiments (e.g., SentiWS)"),
                   tags$li(tags$b("Supervised:"),"Machine-learning methods that include some form of training data and test set and/or classification task (e.g., SVM, BERT)"),
@@ -101,9 +111,11 @@ ui <- fluidPage(theme = "flatly",
 '),conditionalPanel(
                               tags$style(HTML('.group {background-color: #ccc !important;}')),
                               condition = "input.Method != '--Please select a method--'",  # Only show table when Method input is not empty
-                              downloadButton("downloadData", "Download",
+                              # downloadButton("downloadData", "Download (Excel)",
+                              #                style = "float: right; margin-left: 10px;"),
+                              downloadButton("Download_word", "Download (Word)",
                                              style = "float: right; margin-left: 10px;"),
-                              tags$h5(HTML(paste("Your selected text method is:",tags$b(tags$span(textOutput("value")), style = "display:inline-block;")), sep = "")),
+                              tags$h4(HTML(paste("Your selected text method is:",tags$b(tags$span(textOutput("value")), style = "display:inline-block;")), sep = "")),
                             
                               DT::dataTableOutput("table"),  # Change from tableOutput to dataTableOutput
                               
@@ -129,10 +141,10 @@ ui <- fluidPage(theme = "flatly",
 server <- function(input, output) {
   shinyjs::runjs("$('#heading1').click(function() { $('#content1').toggle(); })")
   output$table <- renderDT({
-    df %>%
-      dplyr::select(Phase, `Validation Step`, input$Method,Considerations,"Performance Criteria") %>%
-      dplyr::filter(!!sym(input$Method) != "n.a.") %>%
-      dplyr::rename(Status = input$Method) %>%
+    df |>
+      dplyr::select(Phase, `Validation Step`, input$Method,Considerations,"Performance Criteria") |>
+      dplyr::filter(!!sym(input$Method) != "n.a.") |>
+      dplyr::rename(Status = input$Method) |>
       dplyr::mutate(Phase = factor(Phase, levels = c("Substantive Phase", "Structural Phase", "External Phase", "Continuous Evaluation: Robustness Checks"))) |> 
       mutate(" " = '<input type="checkbox" name="select_row">', .before = 1) -> df_output
     
@@ -182,21 +194,42 @@ server <- function(input, output) {
     paste(selected_option())
   })
   
-  # Downloadable csv of selected dataset ----
-  output$downloadData <- downloadHandler(
+  # # Downloadable csv of selected dataset ----
+  # output$downloadData <- downloadHandler(
+  #   filename = function() {
+  #     paste("checklist_validity_",tolower(as.character(input$Method)), ".xlsx", sep = "")
+  #   },
+  #   content = function(file) {
+  #     writexl::write_xlsx(x = 
+  #       #same filtering as above
+  #       df |>
+  #         dplyr::select(Phase, `Validation Step`, input$Method,"Performance Criteria", Dimension) |>
+  #         dplyr::filter(!!sym(input$Method) != "n.a.") |>
+  #         dplyr::rename(Status = input$Method, "Validity Dimension" = "Dimension") |> 
+  #         dplyr::mutate(Check = "",.before = 1) |> 
+  #         dplyr::mutate("Comments / Justification" = "",.after = 6) 
+  #       , path = file,col_names = T) }
+  # )
+  
+  # Downloadable word of selected dataset ----
+  output$Download_word <- downloadHandler(
     filename = function() {
-      paste("checklist_validity_",tolower(as.character(input$Method)), ".xlsx", sep = "")
+      paste("checklist_validity_",tolower(as.character(input$Method)), ".docx", sep = "")
     },
     content = function(file) {
-      writexl::write_xlsx(x = 
-        #same filtering as above
-        df %>%
-          dplyr::select(Phase, `Validation Step`, input$Method,"Performance Criteria", Dimension) %>%
-          dplyr::filter(!!sym(input$Method) != "n.a.") %>%
-          dplyr::rename(Status = input$Method, "Validity Dimension" = "Dimension") |> 
-          dplyr::mutate(Check = "",.before = 1) |> 
-          dplyr::mutate("Comments / Justification" = "",.after = 6) 
-        , path = file,col_names = T) }
+      if (input$Method == "Dictionary") {
+        file.copy("data/checklists/checklist_dictionary.docx", file)
+      }
+      if (input$Method == "Supervised") {
+        file.copy("data/checklists/checklist_supervised.docx", file)
+      }
+      if (input$Method == "Unsupervised: Topic Model") {
+        file.copy("data/checklists/checklist_unsupervised_TM.docx", file)
+      }
+      if (input$Method == "Unsupervised: Text Scaling") {
+        file.copy("data/checklists/checklist_unsupervised_TS.docx", file)
+      }
+    }
   )
   
 }
