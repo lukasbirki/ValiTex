@@ -1,0 +1,69 @@
+body {font-size: 18px;
+           width: 100%;
+  margin: 0;
+  padding: 0;}
+
+#myimage {max-width: 30%;
+                height: auto;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;}
+.caption {
+        text-align: center; 
+        font-style: italic; 
+        font-size: 18px;}
+       
+.group {font-size: 20px;}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+                    font-size: 15x;                  }
+.dataTables_wrapper .dataTables_scrollHeadInner table.dataTable thead th {
+                    font-size: 16px;}")),
+                # App title ----
+                # Subtitle and Remarks ----
+                
+.collapsible-arrow {
+                  display: inline-block;
+                  width: 0;
+                  height: 0;
+                  border-top: 5px solid transparent;
+                  border-bottom: 0px solid transparent;
+                  border-right: 5px solid black;
+                  margin-right: 5px;
+                  cursor: pointer;
+                }
+
+.navbar-default .navbar-brand {
+  font-weight: bold;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li > a {
+  color: #0A2F51;
+}
+
+.navbar-default .navbar-nav > li.active > a,
+.navbar-default .navbar-nav > li.active > a:hover,
+.navbar-default .navbar-nav > li.active > a:focus,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.tab-content {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 0px;
+}
+
+#img-id{
+  position: fixed;
+  right: 10px;
+  top: 5px;
+  height: 20;
+
+}
+
+
