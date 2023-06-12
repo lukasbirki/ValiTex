@@ -66,4 +66,42 @@ body {font-size: 18px;
 
 }
 
+.question-button {
+  display: inline-block;
+  background-color: grey;
+  color: white;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 14px; /* Adjusted line-height value */
+  cursor: pointer;
+  vertical-align: top; /* Add vertical-align property */
 
+}
+
+.question-button:hover {
+  background-color: #787276;
+}
+
+.hint--error:after {
+  background-color: #c5c6d0;
+  color: black; /* Change text-color to color */
+}
+
+.hint--error.hint--bottom:before {
+  border-bottom-color: #c5c6d0;
+}
+
+.hint--error.hint--left:before {
+  border-left-color: #c5c6d0;
+}
+
+.hint--error.hint--top:before {
+  border-top-color: #c5c6d0;
+}
+
+.hint--error.hint--right:before {
+  border-right-color: #c5c6d0;
+}

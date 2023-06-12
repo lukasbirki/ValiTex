@@ -1,26 +1,31 @@
-library(readxl)
-library(writexl)
 library(tidyverse)
 library(DT)
 library(shinythemes)
 library(shinyjs)
+library(shinyBS)
 library(RefManageR)
 library(shinydashboard)
 library(faq)
+library(prompter)
 source("faq.R")
 
 df <- readxl::read_excel("data/Framework.xlsx")
 
+
+code <- list(
+  js = paste0(readLines("shinyLink.js"), collapse = "\n")
+)
+
 ui <- fluidPage(theme = "flatly",
                 useShinyjs(),
+                use_prompt(),
                 includeCSS("styles.css"),
-                
-      
                 windowTitle = "ValiTex",  # Text displayed in the browser window title
                 navbarPage(title = "ValiTex",
                            theme = "navbar-default",
                 #Background ----
                 tabPanel("Home",
+                         value = "home",
                          h2("ValiTex- A Validation Framework for Computational Text-based Measures of Social Science Constructs", align = "center"),
                          h4("Beta Version 0.9", align = "center"),
                 h3("About"),
@@ -29,15 +34,35 @@ ui <- fluidPage(theme = "flatly",
                                                           "Birkenmaier et al. (2023)."),
                   "The framework is designed to help reserachers that aim to measure social science constructs using computational text analysis to validate thier measures."),
                 h3("Overview"),
-                p("Computational methods to analyse textual data require careful validation (Grimmer and Stewart, 2013; Grimmer et al., 2022). However, social science researchers
+                                p("Computational methods to analyse textual data require careful validation (Grimmer and Stewart, 2013; Grimmer et al., 2022). However, social science researchers
                   often lack common terminology and a unified framework that provides guidance to do so. We present a novel validation framework for text analysis (ValiTex) that guides scholars who aim to measure social science constructs based on textual data. Conceptuall, the framework concists of two components:"),
                 tags$ol(type = "1",
-                  tags$li(tags$b("Conceptual Model:"),"provides a general structure along distinct phases on how to approach validation for text-based measures of social science constructs (see Figure 1, click to expand)"),
+                  tags$li(tags$b("Conceptual Model:"),"provides a general structure along distinct phases on how to approach validation for text-based measures of social science constructs (see Figure 1, click to expand)",add_prompt(
+                    tags$span(
+                      class = "question-button",
+                      "?"), 
+                    position = "bottom", message = "For more information, see xx and y"
+                  ),
+                  div(
+                    tags$img(src = "framework.png", id = "myimage", style = "margin-top: 40px;margin-bottom: 40px; cursor: pointer;"),
+                    p(class = "caption", "Figure 1: Conceptual Model (click to expand)")),),
                   tags$li(tags$b("Dynamic Checklist:"),"defines and specifies specific validation steps and provides guidance on which steps are considered recommendable or optional"),),
-                p("For a detailed introduction into the theoretical background of the framework, please refer to the paper [Link to preprint]"),
-                div(
-                  tags$img(src = "framework.png", id = "myimage", style = "margin-top: 40px;margin-bottom: 40px; cursor: pointer;"),
-                  p(class = "caption", "Figure 1: Conceptual Model (click to expand)")),),
+                
+                
+                tabsetPanel(
+                  tabPanel(
+                    title = "R",
+                    value = "r",
+                    "xx"
+                    ),
+                  tabPanel(
+                    title = "R",
+                    value = "r",
+                    "yy"
+                  )),
+                
+                
+                p("For a detailed introduction into the theoretical background of the framework, please refer to the paper [Link to preprint]")),
                 #Checklist----
                 tabPanel("Checklist",
                          h3("User Instructions"),
@@ -46,7 +71,7 @@ ui <- fluidPage(theme = "flatly",
                                       span(style="color:#ed969e; font-weight: bold", "recommended "), "or ", 
                                       span(style="color:#96caed; font-weight: bold", "optional "),"depending on their relevance.", sep = ""),"As outlined in the corresponding paper, researchers should initially follow the order of the phases, starting with the substantive validation steps and ending with external validation steps while continuously considering robustness checks. 
                 However, researchers might adapt this process to their individual use case."),
-                           p("ValiTex accounts for differences in validation pracices across text-based methods and research contexts. At present, ValiTex differentiates between four broad types of text-based methods:"),
+                           p("ValiTex accounts for differences in validation practices across text-based methods and research contexts. At present, ValiTex differentiates between four broad types of text-based methods:"),
                            tags$ul(tags$li(tags$b("Dictionary:"),"Rule-based methods that include words or phrases along with their respective meanings or sentiments (e.g., SentiWS)"),
                                    tags$li(tags$b("Supervised:"),"Machine-learning methods that include some form of training data and test set and/or classification task (e.g., SVM, BERT)"),
                                    tags$li(tags$b("Unsupervised (Topic Model):"),"Unsupervised methods that generate topis based on word-coocurrences (e.g., LDA) "),
@@ -114,6 +139,7 @@ faq::faq(data = df_daq, elementId = "faq", faqtitle = "")),
 
 #Citation ----
                 tabPanel("Feedback",
+                         id = "tab_feedback",
                          h3("Feedback"),
                          p("Please note this application is currently under construction and evolution.
                          Please feel free to reach out to us with any feedback you have. We are eager to hear from you and will take your suggestions into consideration as we continue to develop and enhance our website. To reach us, please refer to lukas.birkenmaier@gesis.org.

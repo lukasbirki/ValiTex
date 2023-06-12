@@ -19,3 +19,10 @@ df_daq <- data.frame(
 )
 
 
+shinyLink <- function(to, label) {
+  tags$a(
+    class = "shiny__link",
+    href = to,
+    label
+  )
+}
