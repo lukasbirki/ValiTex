@@ -105,3 +105,7 @@ body {font-size: 18px;
 .hint--error.hint--right:before {
   border-right-color: #c5c6d0;
 }
+
+.tabset {
+  width: 80%; /* Adjust the width value as per your requirement */
+}

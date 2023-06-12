@@ -35,37 +35,51 @@ ui <- fluidPage(theme = "flatly",
                   "The framework is designed to help reserachers that aim to measure social science constructs using computational text analysis to validate thier measures."),
                 h3("Overview"),
                                 p("Computational methods to analyse textual data require careful validation (Grimmer and Stewart, 2013; Grimmer et al., 2022). However, social science researchers
-                  often lack common terminology and a unified framework that provides guidance to do so. We present a novel validation framework for text analysis (ValiTex) that guides scholars who aim to measure social science constructs based on textual data. Conceptuall, the framework concists of two components:"),
-                tags$ol(type = "1",
-                  tags$li(tags$b("Conceptual Model:"),"provides a general structure along distinct phases on how to approach validation for text-based measures of social science constructs (see Figure 1, click to expand)",add_prompt(
-                    tags$span(
-                      class = "question-button",
-                      "?"), 
-                    position = "bottom", message = "For more information, see xx and y"
-                  ),
-                  div(
-                    tags$img(src = "framework.png", id = "myimage", style = "margin-top: 40px;margin-bottom: 40px; cursor: pointer;"),
-                    p(class = "caption", "Figure 1: Conceptual Model (click to expand)")),),
-                  tags$li(tags$b("Dynamic Checklist:"),"defines and specifies specific validation steps and provides guidance on which steps are considered recommendable or optional"),),
+                  often lack common terminology and a unified framework that provides guidance to do so. 
+                                  We present a novel validation framework for text analysis (ValiTex) that guides scholars who aim to measure social science constructs based on textual data. Conceptuall, the framework concists of two components:"),
+                tags$ul(type = "A",
+                  tags$li(tags$b("Conceptual Model:"),"General structure along distinct phases on how to approach validation"),
+                  tags$li(tags$b("Dynamic Checklist:"),"A list of concrete validation steps for each phase"),),
                 
-                
-                tabsetPanel(
+                tags$style(
+                  HTML(".tabset { width: 80%; }")
+                ),
+                div(style = "width: 95%; margin: auto;",tabsetPanel(
                   tabPanel(
-                    title = "R",
+                    title = "Conceptual Model",
                     value = "r",
-                    "xx"
+                    h3("Conceptual Model"),
+                    p("The conceptual model defines three major phases which researchers should follow when validating computational text-based measures. These Phases are"),
+                    tags$ul(
+                    tags$li(p(tags$code("Substantive Phase:"), "Demonstrate the theoretical underpinning of the measures")),
+                    tags$li(p(tags$code("Structural Phase:"), "Evaluate the characteristics of the textual model and its output")),
+                    tags$li(p(tags$code("External Phase:"), "Test how the measures relates to unrelated measures or information")),
+                    
+                    
+                      ),
+                    
+                    div(
+                      tags$img(src = "framework.png", id = "myimage", style = "margin-top: 40px;margin-bottom: 40px; cursor: pointer;"),
+                      p(class = "caption", "Figure 1: Conceptual Model (click to expand)"))
                     ),
                   tabPanel(
-                    title = "R",
+                    title = "Checklist",
                     value = "r",
-                    "yy"
-                  )),
+                    h3("Checklist"),
+                    p("The dynamic checklist within ValiTex defines and characterizes empirical validation steps, organized based on overarching validity dimensions. It provides a comprehensive list of validation steps with descriptions, evaluation instructions, and references to supplementary literature.")
+                  ))),
+                p(""),
+                p("For a detailed introduction into the theoretical background of the framework, please refer to the paper [Link to preprint] or click on the respective component below"),
                 
-                
-                p("For a detailed introduction into the theoretical background of the framework, please refer to the paper [Link to preprint]")),
+               ),
                 #Checklist----
                 tabPanel("Checklist",
-                         h3("User Instructions"),
+                         h3("User Instructions", add_prompt(
+                           tags$span(
+                             class = "question-button",
+                             "?"), 
+                           position = "bottom", message = "For more information, see xx and y"
+                         ),),
                          p(HTML(paste("This application generates an adaptable checklist that you can use to validate your text-based measures. 
                 Each row within the table corresponds to one validation step (i.e., a single reported and clearly demarcated validation activity). Validation steps can be either ", 
                                       span(style="color:#ed969e; font-weight: bold", "recommended "), "or ", 
@@ -116,7 +130,7 @@ ui <- fluidPage(theme = "flatly",
   #                style = "float: right; margin-left: 10px;"),
   downloadButton("Download_word", "Download (Word)",
                  style = "float: right; margin-left: 10px;"),
-  tags$h3(HTML(paste("Your selected text method is:",tags$b(tags$span(textOutput("value")), style = "display:inline-block;")), sep = "")),
+  tags$h4(HTML(paste("Your selected text method is:",tags$b(tags$span(textOutput("value")), style = "display:inline-block;")), sep = "")),
   
   DT::dataTableOutput("table"),  # Change from tableOutput to dataTableOutput
   
