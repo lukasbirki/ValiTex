@@ -6,7 +6,8 @@ library(shinythemes)
 library(shinyjs)
 library(RefManageR)
 library(shinydashboard)
-
+library(faq)
+source("faq.R")
 
 df <- readxl::read_excel("data/Framework.xlsx")
 
@@ -14,7 +15,7 @@ ui <- fluidPage(theme = "flatly",
                 useShinyjs(),
                 includeCSS("styles.css"),
                 
-                
+      
                 windowTitle = "ValiTex",  # Text displayed in the browser window title
                 navbarPage(title = "ValiTex",
                            theme = "navbar-default",
@@ -39,7 +40,6 @@ ui <- fluidPage(theme = "flatly",
                   p(class = "caption", "Figure 1: Conceptual Model (click to expand)")),),
                 #Checklist----
                 tabPanel("Checklist",
-                         h2("Generate your Checklist", align = "center"),
                          h3("User Instructions"),
                          p(HTML(paste("This application generates an adaptable checklist that you can use to validate your text-based measures. 
                 Each row within the table corresponds to one validation step (i.e., a single reported and clearly demarcated validation activity). Validation steps can be either ", 
@@ -104,7 +104,15 @@ ui <- fluidPage(theme = "flatly",
 
                          
                          ),
-                #Citation ----
+#FaQ----
+tabPanel("FAQ",
+         h3("Frequently asked questions"),
+         p("Here you will find answers to frequently asked questions about ValiTex If you have any questions that are not addressed here, please feel free to contact us!
+            For a detailed description of the ValiTex framework, please refer to the",tags$a(href="https://github.com/lukasbirki/ValiTex-Checklist",target="_blank", 
+                                                                                                           "working paper.")),
+faq::faq(data = df_daq, elementId = "faq", faqtitle = "")),
+
+#Citation ----
                 tabPanel("Feedback",
                          h3("Feedback"),
                          p("Please note this application is currently under construction and evolution.
