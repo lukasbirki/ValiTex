@@ -1,5 +1,6 @@
 df_daq <- data.frame(
   question = c("What is ValiTex?",
+               "Why do I need to validate text-based measures?",
                "What is the basis of ValiTex?",
                "How does ValiTex approach validation?",
                "What are the components of ValiTex?",
@@ -8,6 +9,7 @@ df_daq <- data.frame(
                "Are all validation steps equally important?"),
   answer = c("ValiTex is a novel framework designed to validate computational text-based measures of social science constructs. 
                 It provides researchers with tools and guidance to navigate the validation process for text-based research.",
+             "Explanation",
              "ValiTex builds upon the methodological research in the social sciences, particularly psychometrics, which has a well-established understanding of validation practices. 
                 It also incorporates insights from a recent review of validation practices in text-based research by Birkenmaier et al. (2023).",
              "ValiTex follows three key principles:\n1. Organizing the validation process across key phases outlined in the psychometric tradition.\n2. Applying different validation steps within each phase, with some steps being more relevant for demonstrating measurement validity.\n3. Including continuous evaluation of the measure's robustness towards researchers' degree of freedom or context-specific factors.",

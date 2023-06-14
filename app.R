@@ -35,11 +35,11 @@ ui <- fluidPage(theme = "flatly",
                   "The framework is designed to help reserachers that aim to measure social science constructs using computational text analysis to validate thier measures."),
                 h3("Overview"),
                                 p("Computational methods to analyse textual data require careful validation (Grimmer and Stewart, 2013; Grimmer et al., 2022). However, social science researchers
-                  often lack common terminology and a unified framework that provides guidance to do so. 
-                                  We present a novel validation framework for text analysis (ValiTex) that guides scholars who aim to measure social science constructs based on textual data. Conceptuall, the framework concists of two components:"),
+                  often lack common terminology and a unified framework that provides guidance to do so. We present a novel validation framework for text analysis (ValiTex) that guides scholars who aim to measure social science constructs based on textual data. Conceptuall, the framework concists of two components:"),
                 tags$ul(type = "A",
                   tags$li(tags$b("Conceptual Model:"),"General structure along distinct phases on how to approach validation"),
                   tags$li(tags$b("Dynamic Checklist:"),"A list of concrete validation steps for each phase"),),
+                p("For a detailed introduction into the theoretical background of the framework, please refer to the paper [Link to preprint] or click on the respective component below"),
                 
                 tags$style(
                   HTML(".tabset { width: 80%; }")
@@ -66,10 +66,18 @@ ui <- fluidPage(theme = "flatly",
                     title = "Checklist",
                     value = "r",
                     h3("Checklist"),
-                    p("The dynamic checklist within ValiTex defines and characterizes empirical validation steps, organized based on overarching validity dimensions. It provides a comprehensive list of validation steps with descriptions, evaluation instructions, and references to supplementary literature.")
-                  ))),
-                p(""),
-                p("For a detailed introduction into the theoretical background of the framework, please refer to the paper [Link to preprint] or click on the respective component below"),
+                    p("The dynamic checklist within ValiTex defines and characterizes empirical validation steps, organized based on overarching validity dimensions. It provides a comprehensive list of validation steps with descriptions, evaluation instructions, and references to supplementary literature."),
+                    div(tags$img(src = "checklist.png", id = "myimage", style = "margin-top: 40px;margin-bottom: 40px; cursor: pointer;"),
+                        p(class = "caption", "Figure 2: Screenshot Checklist (click to expand)"))
+                    ,
+                  )),
+                  div(class = "footer",
+                      p("Contact:",a(" lukas.birkenmaier@gesis.org", href = "lukas.birkenmaier@gesis.org"),
+                        
+                        p("This work is licensed under a",
+                          a("Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)",
+                            href = "https://creativecommons.org/licenses/by-nc/4.0/",
+                            target = "_blank"))))),
                 
                ),
                 #Checklist----
@@ -135,12 +143,17 @@ ui <- fluidPage(theme = "flatly",
   DT::dataTableOutput("table"),  # Change from tableOutput to dataTableOutput
   
 ),
-#Button
-# Add image below description
+
                              )
                            )
                          ),
-
+  div(class = "footer",
+      p("Contact:",a(" lukas.birkenmaier@gesis.org", href = "lukas.birkenmaier@gesis.org"),
+        
+        p("This work is licensed under a",
+          a("Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)",
+            href = "https://creativecommons.org/licenses/by-nc/4.0/",
+            target = "_blank"))))
                          
                          ),
 #FaQ----
@@ -149,9 +162,10 @@ tabPanel("FAQ",
          p("Here you will find answers to frequently asked questions about ValiTex If you have any questions that are not addressed here, please feel free to contact us!
             For a detailed description of the ValiTex framework, please refer to the",tags$a(href="https://github.com/lukasbirki/ValiTex-Checklist",target="_blank", 
                                                                                                            "working paper.")),
-faq::faq(data = df_daq, elementId = "faq", faqtitle = "")),
+div(faq::faq(data = df_daq, elementId = "faq", faqtitle = "")),
+),
 
-#Citation ----
+#Feedback ----
                 tabPanel("Feedback",
                          id = "tab_feedback",
                          h3("Feedback"),
@@ -163,9 +177,20 @@ faq::faq(data = df_daq, elementId = "faq", faqtitle = "")),
                          p("Birkenmaier, Lukas; Lechner, Clemens; Wagner, Claudia. (2023).",tags$em("ValiTex - a uniform validation framework for computational text-based measures of social science constructs."), "[Link to Arxiv DOI, tba. soon]"),
                          verbatimTextOutput("citationOutput"),
                          
+                         div(class = "footer",
+                             p("Contact:",a(" lukas.birkenmaier@gesis.org", href = "lukas.birkenmaier@gesis.org"),
+                               
+                               p("This work is licensed under a",
+                                 a("Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)",
+                                   href = "https://creativecommons.org/licenses/by-nc/4.0/",
+                                   target = "_blank"))))
                          ),    
-                )
+                ),
+
+  
+
 )
+
 
 server <- function(input, output) {
   shinyjs::runjs("$('#heading1').click(function() { $('#content1').toggle(); })")
