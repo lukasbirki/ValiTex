@@ -5,9 +5,9 @@ account: lukasbirki
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 8947380
-bundleId: 7344604
+bundleId: 7367319
 url: https://lukasbirki.shinyapps.io/ValiTex/
-when: 1686747323.87792
-lastSyncTime: 1686747323.87794
+when: 1687274772.74682
+lastSyncTime: 1687274772.74683
 asMultiple: FALSE
 asStatic: FALSE

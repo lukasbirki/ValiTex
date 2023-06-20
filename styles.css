@@ -8,6 +8,18 @@ body {font-size: 18px;
                 display: block;
                 margin-left: auto;
                 margin-right: auto;}
+                
+#myimagecheck {max-width: 30%;
+                height: auto;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;}
+                
+.dataTables_wrapper {
+      width: 90% !important;
+      margin: 0 auto;
+    }
+                
 .caption {
         text-align: center; 
         font-style: italic; 
