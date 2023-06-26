@@ -18,12 +18,16 @@ body {font-size: 18px;
 .dataTables_wrapper {
       width: 90% !important;
       margin: 0 auto;
+        font-size: 14px;  /* Decrease the font size */
+
     }
                 
 .caption {
         text-align: center; 
         font-style: italic; 
-        font-size: 18px;}
+        font-size: 18px;
+  font-color: red;
+}
        
 .group {font-size: 20px;}
 .dataTables_wrapper .dataTables_paginate .paginate_button {
@@ -50,7 +54,7 @@ body {font-size: 18px;
 
 .navbar-default .navbar-brand,
 .navbar-default .navbar-nav > li > a {
-  color: #0A2F51;
+  color: black; /* Set font color to black */
 }
 
 .navbar-default .navbar-nav > li.active > a,
@@ -63,6 +67,8 @@ body {font-size: 18px;
   padding: 10px;
   margin: 5px;
 }
+
+
 
 .tab-content {
   background-color: #ffffff;

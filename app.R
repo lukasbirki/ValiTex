@@ -44,8 +44,15 @@ ui <- fluidPage(theme = "flatly",
                                 To guide researchers who aim to measure social science constructs based on textual data, we therefore present a novel validation framework for text analysis called ValiTex. 
                                 Conceptuall, the framework concists of two components:"),
                 tags$ul(
-                  tags$li(tags$b("Conceptual Model:"),"General structure along distinct phases on how to approach validation"),
-                  tags$li(tags$b("Dynamic Checklist:"),"A list of concrete validation steps for each phase of the conceptual model"),),
+                  tags$li(
+                    style = "margin-bottom: 10px;",
+                    tags$span(class = "glyphicon glyphicon-home"),
+                    tags$b("Conceptual Model:"),
+                    "General structure along distinct phases on how to approach validation"),
+                tags$li(
+                  tags$span(class = "glyphicon glyphicon-check"),
+                  
+                    tags$b("Checklist:"),"A list of concrete validation steps for each phase of the conceptual model"),),
                 p("If you want to learn more about the component of ValiTex, please click on the respective 
                   section below or have a look at our",tags$a(href="https://github.com/lukasbirki/ValiTex-Checklist",target="_blank", 
                                                                 "Working Paper")),
@@ -55,7 +62,7 @@ ui <- fluidPage(theme = "flatly",
                 ),
                 div(style = "width: 95%; margin: auto;",tabsetPanel(
                   tabPanel(
-                    title = "Conceptual Model",
+                    title = HTML(paste('<span class="glyphicon glyphicon-home"></span>', "Conceptual Model")),
                     value = "r",
                     h3("Conceptual Model"),
                     p("The conceptual model defines three major phases which researchers should follow when validating computational text-based measures:"),
@@ -74,7 +81,7 @@ ui <- fluidPage(theme = "flatly",
                       p(class = "caption", "Figure 1: Conceptual Model (click to expand)")),
                     ),
                   tabPanel(
-                    title = "Checklist",
+                    title = HTML(paste('<span class="glyphicon glyphicon-check"></span>', "Checklist")),
                     value = "r",
                     h3("Checklist"),
                     p("The dynamic checklist then provides a comprehensive list of validation steps for each phase within the structural model. 
@@ -110,7 +117,7 @@ ui <- fluidPage(theme = "flatly",
                     )),
                     p("To use the checklist in your research just click on",tags$b("Get Started")," in the navigation bar. 
                       There, you can generate your own checklist depending on the type of text method used. Furthermore, you will be able to 
-                      download a Word or PDF template which you can fill out by your own and attach to your publication."),
+                      download a Word template which you can fill out by your own and attach to your publication."),
                     div(tags$img(src = "checklist.png", id = "myimagecheck", style = "margin-top: 40px;margin-bottom: 40px; cursor: pointer;"),
 
                         p(class = "caption", "Figure 2: Screenshot Checklist (click to expand)"))
@@ -118,7 +125,13 @@ ui <- fluidPage(theme = "flatly",
                   )),
                   div(class = "footer",
                       p("Contact:",a(" lukas.birkenmaier@gesis.org", href = "lukas.birkenmaier@gesis.org"),
-                        
+                        " | See also the repository on GitHub!",
+                        a(
+                          icon("github"),
+                          href = "https://github.com/lukasbirki/ValiTex-Checklist",
+                          target = "_blank",
+                          style = "color: #000000; font-size: 24px; margin-right: 10px;"
+                        )                               ,
                         p("This work is licensed under a",
                           a("Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)",
                             href = "https://creativecommons.org/licenses/by-nc/4.0/",
@@ -189,21 +202,68 @@ ui <- fluidPage(theme = "flatly",
   condition = "input.Method != '--Please select a method--'",  # Only show table when Method input is not empty
   # downloadButton("downloadData", "Download (Excel)",
   #                style = "float: right; margin-left: 10px;"),
-  downloadButton("Download_word", "Download (Word)",
-                 style = "float: right; margin-left: 10px;"),
-  tags$h4(HTML(paste("Your selected text method is:",tags$b(tags$span(textOutput("value")), style = "display:inline-block;")), sep = "")),
-  DT::dataTableOutput("table", width = "100%")),
+    div(
+  style = "text-align: center;", 
+  h4(HTML(paste("Your selected text method is:",tags$b(tags$span(textOutput("value")), style = "display:inline-block;")), sep = "")),
+  
+  
+  p(span(class = "glyphicon glyphicon-info-sign", style = "margin-right: 5px;"),
+  "To document validation steps using the checklist, we recommend to download the Word Template"),
+  
+  downloadButton("Download_word", "Download (Word)")
+ ),
+  DT::dataTableOutput("table", width = "100%"),  
+  
+  tags$div(
+    style = "font-size: 12px; margin-top: 10px; text-align: center;",
+    HTML(paste(
+      "<b>References</b><br>",
+      "Adcock, Robert, and David Collier. <i>Measurement validity: A shared standard for qualitative and quantitative research</i>. American political science review 95, no. 3 (2001): 529–46.<br>",
+      "Atteveldt, Wouter van, Mariken ACG van der Velden, and Mark Boukes. <i>The Validity of Sentiment Analysis: Comparing Manual Annotation, Crowd-Coding, Dictionary Approaches, and Machine Learning Algorithms</i>. Communication Methods and Measures 15, no. 2 (2021): 121–40.<br>",
+      "Baden, Christian, Neta Kligler-Vilenchik, and Moran Yarchi. <i>Hybrid Content Analysis: Toward a Strategy for the Theory-Driven, Computer-Assisted Classification of Large Text Corpora</i>. Communication Methods and Measures 14, no. 3 (2020): 165–83.<br>",
+      "Boukes, Mark, Bob Velde, Theo Araujo, and Rens Vliegenthart. <i>What’s the Tone? Easy Doesn’t Do It: Analyzing Performance and Agreement Between Off-the-Shelf Sentiment Analysis Tools</i>. Communication Methods and Measures 14 (October 17, 2019): 1–22.<br>",
+      "Chang, Jonathan, Sean Gerrish, Chong Wang, Jordan Boyd-graber, and David Blei. <i>Reading Tea Leaves: How Humans Interpret Topic Models</i>. In Advances in Neural Information Processing Systems, vol. 22. Curran Associates, Inc., 2009.<br>",
+      "Clark, Lee Anna, and David Watson. <i>Constructing validity: New developments in creating objective measuring instruments</i>. Psychological assessment 31, no. 12 (2019): 1412.<br>",
+      "Denny, Matthew J., and Arthur Spirling. <i>Text Preprocessing For Unsupervised Learning: Why It Matters, When It Misleads, And What To Do About It</i>. Political Analysis 26, no. 2 (April 2018): 168–89.<br>",
+      "Goet, Niels D. <i>Measuring polarization with text analysis: evidence from the UK House of Commons, 1811–2015</i>. Political Analysis 27, no. 4 (2019): 518–39.<br>",
+      "Grimmer, Justin, and Brandon M. Stewart. <i>Text as data: The promise and pitfalls of automatic content analysis methods for political texts</i>. Political analysis 21, no. 3 (2013): 267–97.<br>",
+      "Grimmer, Justin, Margaret E. Roberts, and Brandon M. Stewart. <i>Text as Data: A New Framework for Machine Learning and the Social Sciences</i>. Princeton Oxford: Princeton University Press, 2022.<br>",
+      "Huang, Leslie, Patrick O. Perry, and Arthur Spirling. <i>A General Model of Author “Style” with Application to the UK House of Commons, 1935–2018</i>. Political Analysis 28, no. 3 (July 2020): 412–34.<br>",
+      "Jankowski, Michael, and Robert A. Huber. <i>When Correlation Is Not Enough: Validating Populism Scores from Supervised Machine-Learning Models</i>. OSF Preprints, January 21, 2022.<br>",
+      "Krippendorff, Klaus. <i>Content analysis: An introduction to its methodology</i>. Sage publications, 2018.<br>",
+      "Müller, Stefan. <i>Media Coverage of Campaign Promises Throughout the Electoral Cycle</i>. Political Communication 37, no. 5 (September 2, 2020): 696–718.<br>",
+      "Röttger, Paul, Bertie Vidgen, Dong Nguyen, Zeerak Waseem, Helen Margetts, and Janet Pierrehumbert. <i>HateCheck: Functional Tests for Hate Speech Detection Models</i>. In Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers), 41–58. Online: Association for Computational Linguistics, 2021.<br>",
+      "Sen, Indira, Fabian Flöck, Katrin Weller, Bernd Weiß, and Claudia Wagner. <i>A Total Error Framework for Digital Traces of Human Behavior on Online Platforms</i>. Public Opinion Quarterly 85, no. S1 (2021): 399–422.<br>",
+      "Van Der Velden, Mariken, Gijs Schumacher, and Barbara Vis. <i>Living in the Past or Living in the Future? Analyzing Parties’ Platform Change In Between Elections, The Netherlands 1997–2014</i>. Political Communication 35, no. 3 (July 3, 2018): 393–412.<br>",
+      "Wu, Tongshuang, Marco Tulio Ribeiro, Jeffrey Heer, and Daniel Weld. <i>Errudite: Scalable, Reproducible, and Testable Error Analysis</i>. In Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics, 747–63. Florence, Italy:2019.<br>",
+      "Yarchi, Moran, Christian Baden, and Neta Kligler-Vilenchik. <i>Political Polarization on the Digital Sphere: A Cross-Platform, Over-Time Analysis of Interactional, Positional, and Affective Polarization on Social Media</i>. Political Communication 38, no. 1–2 (March 15, 2021): 98–139.<br>",
+      "Ying, Luwei, Jacob M. Montgomery, and Brandon M. Stewart. <i>Topics, concepts, and measurement: a crowdsourced procedure for validating topics as measures</i>. Political Analysis 30, no. 4 (2022): 570–89.<br>",
+      "Zhang, Jiawei, Yang Wang, Piero Molino, Lezhi Li, and David S. Ebert. <i>Manifold: A model-agnostic framework for interpretation and diagnosis of machine learning models</i>. IEEE transactions on visualization and computer graphics 25, no. 1 (2018): 364–73.<br>"
+      
+    ))
+  )
+  
+  
+  
+  ),
+
   
                              )),
                          ),
-div(class = "footer",
-    p("Contact:",a(" lukas.birkenmaier@gesis.org", href = "lukas.birkenmaier@gesis.org"),
-      
-      p("This work is licensed under a",
-        a("Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)",
-          href = "https://creativecommons.org/licenses/by-nc/4.0/",
-          target = "_blank"))))
-                         
+ div(class = "footer",
+     p("Contact:",a(" lukas.birkenmaier@gesis.org", href = "lukas.birkenmaier@gesis.org"),
+       " | See also the repository on GitHub!",
+       a(
+         icon("github"),
+         href = "https://github.com/lukasbirki/ValiTex-Checklist",
+         target = "_blank",
+         style = "color: #000000; font-size: 24px; margin-right: 10px;"
+       )                               ,
+       p("This work is licensed under a",
+         a("Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)",
+           href = "https://creativecommons.org/licenses/by-nc/4.0/",
+           target = "_blank"))))
+  
                          ),
 #FaQ----
 tabPanel("FAQ",
@@ -218,7 +278,7 @@ div(faq::faq(data = df_daq, elementId = "faq", faqtitle = "")),
                 tabPanel("Feedback",
                          id = "tab_feedback",
                          h3("Feedback"),
-                         p("Please note this application is currently under construction and evolution.
+                         p("Please note that this application is currently under construction and evolution.
                          Please feel free to reach out to us with any feedback you have. We are eager to hear from you and will take your suggestions into consideration as we continue to develop and enhance our website. To reach us, please refer to lukas.birkenmaier@gesis.org.
  "),
                          h3("Citation"),
@@ -228,21 +288,25 @@ div(faq::faq(data = df_daq, elementId = "faq", faqtitle = "")),
                          
                          div(class = "footer",
                              p("Contact:",a(" lukas.birkenmaier@gesis.org", href = "lukas.birkenmaier@gesis.org"),
-                               
+                               " | See also the repository on GitHub!",
+                                a(
+                                   icon("github"),
+                                   href = "https://github.com/lukasbirki/ValiTex-Checklist",
+                                   target = "_blank",
+                                   style = "color: #000000; font-size: 24px; margin-right: 10px;"
+                                 )                               ,
                                p("This work is licensed under a",
                                  a("Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)",
                                    href = "https://creativecommons.org/licenses/by-nc/4.0/",
-                                   target = "_blank"))))
+                                   target = "_blank")))),
+
                          ),    
+
                 ),
-
-  
-
 )
 
 
 server <- function(input, output) {
-  shinyjs::runjs("$('#heading1').click(function() { $('#content1').toggle(); })")
   output$table <- renderDT({
     df |>
       dplyr::select(Phase, `Validation Step`, input$Method,Considerations,"Performance Criteria",Dimension,`Source / References`) |>
