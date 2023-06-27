@@ -1,6 +1,6 @@
 plot_file <- function(x){
   df %>%
-    dplyr::select(Phase,  `Validation Step`,Test = "Performance Criteria", DI = Dictionary, SU = Supervised,US = "Unsupervised: Topic Model",UT = "Unsupervised: Text Scaling", 
+    dplyr::select(Phase,  `Validation Step`,Considerations, Reasoning = "Performance Criteria", DI = Dictionary, SU = Supervised,US = "Unsupervised: Topic Model",UT = "Unsupervised: Text Scaling", 
                   Dimension) %>%
     filter(Phase == x) |> select(-Phase) |> 
     datatable(

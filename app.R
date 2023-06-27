@@ -32,17 +32,17 @@ ui <- fluidPage(theme = "flatly",
                          p("This webpage accompanies the ", tags$a(href="https://github.com/lukasbirki/ValiTex-Checklist",target="_blank", 
                         "ValiTex"),"framework by", tags$a(href="https://github.com/lukasbirki/ValiTex-Checklist",target="_blank", 
                                                           "Birkenmaier et al. (2023)."),
-                  "The framework is designed to help reserachers that aim to measure social science constructs using computational text analysis to validate their empirical measures."),
+                  "The framework is designed to help researchers that aim to measure social science constructs using computational text analysis to validate their empirical measures."),
                 h3("Overview"),
-                                p("Validation is a critical tasks in text analysis and natuaral language processing. 
+                                p("Validation is a critical task in text analysis and natural language processing. 
                                As its core, validation requires different activities to demonstrate that a method measures what it purports to measure. 
-                               Recently, there has been a skyrocketing of studies using computational text analysis to measure social science construct from text, 
-                               such as sexism, polulist language, or ideology. 
-                               However, validing these measures are challenging, especially because textual data can often be interpreted differently."),
+                               Recently, there has been a skyrocketing number of studies using computational text analysis to measure social science constructs from text, 
+                               such as sexism, populist language, or ideology. 
+                               However, validating these measures is challenging, especially because textual data can often be interpreted differently."),
                               p("One crucial problem in the validation of text-based measures is the lack of concepual clarity of how to conduct validation. 
-                              This espresses itself, among others, in the absence of commonly-shared terminology and general framework that provides guidance to do so. 
+                              This expresses itself, among others, in the absence of commonly-shared terminology and general framework that provides guidance to do so. 
                                 To guide researchers who aim to measure social science constructs based on textual data, we therefore present a novel validation framework for text analysis called ValiTex. 
-                                Conceptuall, the framework concists of two components:"),
+                                Conceptually, the framework consists of two components:"),
                 tags$ul(
                   tags$li(
                     style = "margin-bottom: 10px;",
@@ -53,9 +53,9 @@ ui <- fluidPage(theme = "flatly",
                   tags$span(class = "glyphicon glyphicon-check"),
                   
                     tags$b("Checklist:"),"A list of concrete validation steps for each phase of the conceptual model"),),
-                p("If you want to learn more about the component of ValiTex, please click on the respective 
+                p("If you want to learn more about the components of ValiTex, please click on the respective 
                   section below or have a look at our",tags$a(href="https://github.com/lukasbirki/ValiTex-Checklist",target="_blank", 
-                                                                "Working Paper")),
+                                                                "Working Paper.")),
       
                 tags$style(
                   HTML(".tabset { width: 80%; }")
@@ -68,14 +68,13 @@ ui <- fluidPage(theme = "flatly",
                     p("The conceptual model defines three major phases which researchers should follow when validating computational text-based measures:"),
                     tags$ul(
                     tags$li(p(tags$b(tags$code("Substantive Phase:")), "The substantive phase comprises the",tags$b(" theoretical underpinning")," of the measure.
-                              It entails all validation steps which ensure the adequacy of the measurement process regarding the operationalization of the construct. 
-                              Exemplary validation steps are",tags$i("Justifying the link between the measures and the construct")," or ",tags$i("Justifying the choice of preprocessing decisions."))),
+                              It entails all validation steps which ensure the adequacy of the measurement process regarding the operationalization of the construct." 
+                              )),
                     tags$li(p(tags$b(tags$code("Structural Phase:")), "The structural phase includes the evaluation of the",tags$b("properties of the model and its measures"),
-                    "It entails all validation steps to carefully examine and evaluate the characteristics of the textual model and its output and to identify  biases or errors.
-                    Exemplary validation steps are ",tags$i("Feature Importance Analysis"), "or", tags$i("Error Analysis"))),
+                    "It entails all validation steps to carefully examine and evaluate the characteristics of the textual model and its output and to identify  biases or errors.")),
                     tags$li(p(tags$b(tags$code("External Phase:")), "The external phase comprises the",tags$b("relationship with unrelated information."),
-                              "It entails all validation steps that tests for how the measures relate to to independent measures or exogenous events. 
-                              Exemplary validation steps are ",tags$i("Comparing measures with human-annotated test set"), "or", tags$i("Comparing measures with alternative text-based methods"))),),
+                              "It entails all validation steps that tests for how the measures relate to to independent measures or exogenous events." 
+                              )),),
                     div(
                       tags$img(src = "framework.png", id = "myimage", style = "margin-top: 40px;margin-bottom: 40px; cursor: pointer;"),
                       p(class = "caption", "Figure 1: Conceptual Model (click to expand)")),
@@ -95,7 +94,7 @@ ui <- fluidPage(theme = "flatly",
                       ),
                       tags$tr(
                         tags$td(tags$code("Status")),
-                        tags$td("Relevance of the validaton step (either recommended or optional)")
+                        tags$td("Relevance of the validation step (either recommended or optional)")
                       ),
                       tags$tr(
                         tags$td(tags$code("Considerations")),
@@ -117,7 +116,7 @@ ui <- fluidPage(theme = "flatly",
                     )),
                     p("To use the checklist in your research just click on",tags$b("Get Started")," in the navigation bar. 
                       There, you can generate your own checklist depending on the type of text method used. Furthermore, you will be able to 
-                      download a Word template which you can fill out by your own and attach to your publication."),
+                      download a Word template which you can fill out on your own and attach to your publication."),
                     div(tags$img(src = "checklist.png", id = "myimagecheck", style = "margin-top: 40px;margin-bottom: 40px; cursor: pointer;"),
 
                         p(class = "caption", "Figure 2: Screenshot Checklist (click to expand)"))
@@ -151,12 +150,12 @@ ui <- fluidPage(theme = "flatly",
                                                                                                                                                                                   position = "bottom", message = "E.g., SentiWS, LIWC")),
                                    tags$li(tags$b("Supervised:"),"Machine-learning methods that include some form of training data and test set and classification task",add_prompt(tags$span(class = "question-button", "?"), 
                                                                                                                                                                                        position = "bottom", message = "E.g., Logistic regressiion, CNN, BERT")),
-                                   tags$li(tags$b("Unsupervised (Topic Model):"),"Unsupervised methods that generate topis based on word-coocurrences",add_prompt(tags$span(class = "question-button", "?"), 
+                                   tags$li(tags$b("Unsupervised (Topic Model):"),"Unsupervised methods that generate topics based on word-coocurrences",add_prompt(tags$span(class = "question-button", "?"), 
                                                                                                                                                                   position = "bottom", message = "E.g., Latent Dirichlet Allocation (LDA)")),
                                    tags$li(tags$b("Unsupervised (Text Scaling)"),"Unsupervised methods that produce scores that relate to some underlying scale based on word-coocurrences", add_prompt(tags$span(class = "question-button", "?"), 
                                                                                                                                                                                                         position = "bottom", message = "E.g., Wordfish, Wordscores")),
                            ),
-                           tags$p(tags$b("Please start by choosing a method from the drop-down menue below."), "The complete list of validation steps is also available on ",
+                           tags$p(tags$b("Please start by choosing a method from the drop-down menu below."), "The complete list of validation steps is also available on ",
                                   tags$a(href="https://github.com/lukasbirki/ValiTex-Checklist/tree/main/data",target="_blank", 
                                          "Github.")),
                            
@@ -208,7 +207,7 @@ ui <- fluidPage(theme = "flatly",
   
   
   p(span(class = "glyphicon glyphicon-info-sign", style = "margin-right: 5px;"),
-  "To document validation steps using the checklist, we recommend to download the Word Template"),
+  "To document validation steps using the checklist, we recommend to download the Word Template below"),
   
   downloadButton("Download_word", "Download (Word)")
  ),
