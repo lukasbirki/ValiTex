@@ -30,7 +30,7 @@ ui <- fluidPage(theme = "flatly",
                          h4("Beta Version 0.9", align = "center"),
                 h3("About"),
                          p("This webpage accompanies the ", tags$a(href="https://github.com/lukasbirki/ValiTex-Checklist",target="_blank", 
-                        "ValiTex"),"framework by", tags$a(href="https://github.com/lukasbirki/ValiTex-Checklist",target="_blank", 
+                        "ValiTex"),"framework by", tags$a(href="https://arxiv.org/abs/2307.02863",target="_blank", 
                                                           "Birkenmaier et al. (2023)."),
                   "The framework is designed to help researchers that aim to measure social science constructs using computational text analysis to validate their empirical measures."),
                 h3("Overview"),
@@ -54,7 +54,7 @@ ui <- fluidPage(theme = "flatly",
                   
                     tags$b("Checklist:"),"A list of concrete validation steps for each phase of the conceptual model"),),
                 p("If you want to learn more about the components of ValiTex, please click on the respective 
-                  section below or have a look at our",tags$a(href="https://github.com/lukasbirki/ValiTex-Checklist",target="_blank", 
+                  section below or have a look at our",tags$a(href="https://arxiv.org/abs/2307.02863",target="_blank", 
                                                                 "Working Paper.")),
       
                 tags$style(
