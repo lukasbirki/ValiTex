@@ -1,0 +1,146 @@
+ body {font-size: 18px;
+           width: 100%;
+  margin: 0;
+  padding: 0;}
+
+#myimage {max-width: 30%;
+                height: auto;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;}
+
+#myimagecheck {max-width: 30%;
+                height: auto;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;}
+
+.dataTables_wrapper {
+      width: 90% !important;
+      margin: 0 auto;
+        font-size: 14px;  /* Decrease the font size */
+
+    }
+
+.caption {
+        text-align: center;
+        font-style: italic;
+        font-size: 18px;
+  font-color: red;
+}
+
+.group {font-size: 20px;}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+                    font-size: 15x;                  }
+.dataTables_wrapper .dataTables_scrollHeadInner table.dataTable thead th {
+                    font-size: 15px;}")),
+                # App title ----
+                # Subtitle and Remarks ----
+
+.collapsible-arrow {
+                  display: inline-block;
+                  width: 0;
+                  height: 0;
+                  border-top: 5px solid transparent;
+                  border-bottom: 0px solid transparent;
+                  border-right: 5px solid black;
+                  margin-right: 5px;
+                  cursor: pointer;
+                }
+
+.navbar-default .navbar-brand {
+  font-weight: bold;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li > a {
+  color: black; /* Set font color to black */
+}
+
+.navbar-default .navbar-nav > li.active > a,
+.navbar-default .navbar-nav > li.active > a:hover,
+.navbar-default .navbar-nav > li.active > a:focus,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+}
+
+
+
+.tab-content {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 0px;
+}
+
+#img-id{
+  position: fixed;
+  right: 10px;
+  top: 5px;
+  height: 20;
+
+}
+
+.question-button {
+  display: inline-block;
+  background-color: grey;
+  color: white;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 14px; /* Adjusted line-height value */
+  cursor: pointer;
+  vertical-align: top; /* Add vertical-align property */
+
+}
+
+.question-button:hover {
+  background-color: #787276;
+}
+
+.hint--error:after {
+  background-color: #c5c6d0;
+  color: black; /* Change text-color to color */
+}
+
+.hint--error.hint--bottom:before {
+  border-bottom-color: #c5c6d0;
+}
+
+.hint--error.hint--left:before {
+  border-left-color: #c5c6d0;
+}
+
+.hint--error.hint--top:before {
+  border-top-color: #c5c6d0;
+}
+
+.hint--error.hint--right:before {
+  border-right-color: #c5c6d0;
+}
+
+.tabset {
+  width: 80%; /* Adjust the width value as per your requirement */
+}
+
+.footer {
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #888888;
+}
+
+.footer a {
+  color: #888888;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #333333;
+}
