@@ -7,3 +7,5 @@ $run_dev.*
 ^.here$
 ^README\.Rmd$
 ^CODE_OF_CONDUCT\.md$
+^app\.R$
+^rsconnect$

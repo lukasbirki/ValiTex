@@ -11,6 +11,7 @@ Imports:
     DT,
     faq,
     golem (>= 0.4.1),
+    pkgload,
     prompter,
     shiny (>= 1.7.4.1),
     shinyjs
@@ -22,3 +23,5 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 RoxygenNote: 7.2.3
+Depends: 
+    R (>= 2.10)
