@@ -14,7 +14,9 @@ Imports:
     pkgload,
     prompter,
     shiny (>= 1.7.4.1),
-    shinyjs
+    shinyjs,
+    htmlwidgets,
+    readxl
 Suggests: 
     spelling,
     testthat (>= 3.0.0)

@@ -4,4 +4,16 @@
 
 pkgload::load_all(export_all = FALSE,helpers = FALSE,attach_testthat = FALSE)
 options( "golem.app.prod" = TRUE)
+options(shinyapps.locale.cache = FALSE)
+options(repos = )
+
 ValiTex::run_app() # add parameters here (if any)
+rsconnect::deployApp()
+rsconnect::deployApp(upload)
+
+devtools::document()
+devtools::check()
+getOption("repos")
+renv::snapshot()
+
+

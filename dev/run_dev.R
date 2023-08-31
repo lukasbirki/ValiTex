@@ -13,26 +13,3 @@ golem::document_and_reload()
 
 # Run the application
 run_app()
-
-install.packages("devtools")
-devtools::install_github("lukasbirki/ValiTex", force = T)
-
-library(valitex)
-valitex::run_app()
-
-devtools::check()
-
-devtools::check()
-
-pkgbuild::check_build_tools(debug = TRUE)
-
-Sys.getenv("PATH")
-R.version
-
-installrinstall.packages("installr")
-installr::updateR()
-remotes::install_local(force = T)
-
-library(ValiTex)
-run_app()
-golem::add_shinyappsio_file()
