@@ -76,19 +76,19 @@ app_server <- function(input, output, session) {
     },
     content = function(file) {
       if (input$Method == "Dictionary") {
-        file.copy("data/checklists/checklist_dictionary.docx", file)
+        file.copy("data-raw/checklists/checklist_dictionary.docx", file)
       }
       if (input$Method == "Supervised") {
-        file.copy("data/checklists/checklist_supervised.docx", file)
+        file.copy("data-raw/checklists/checklist_supervised.docx", file)
       }
       if (input$Method == "Unsupervised: Topic Model") {
-        file.copy("data/checklists/checklist_unsupervised_TM.docx", file)
+        file.copy("data-raw/checklists/checklist_unsupervised_TM.docx", file)
       }
       if (input$Method == "Unsupervised: Text Scaling") {
-        file.copy("data/checklists/checklist_unsupervised_TS.docx", file)
+        file.copy("data-raw/checklists/checklist_unsupervised_TS.docx", file)
       }
       if (input$Method == "API") {
-        file.copy("data/checklists/checklist_API.docx", file)
+        file.copy("data-raw/checklists/checklist_API.docx", file)
       }
     }
   )

@@ -317,7 +317,7 @@ mod_ValiTex_shiny_ui <- function(id){
 mod_ValiTex_shiny_server <- function(id){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
-    df <- readxl::read_excel("data/Framework.xlsx")
+    df <- readxl::read_excel("data-raw/Framework.xlsx")
     output$table <- DT::renderDT({
       df |>
         dplyr::select(Phase, ID, `Validation Step`, input$Method,Considerations,"Performance Criteria",Dimension,`Source / References`) |>
@@ -386,16 +386,16 @@ mod_ValiTex_shiny_server <- function(id){
       },
       content = function(file) {
         if (input$Method == "Dictionary") {
-          file.copy("data/checklists/checklist_dictionary.docx", file)
+          file.copy("data-raw/checklists/checklist_dictionary.docx", file)
         }
         if (input$Method == "Supervised") {
-          file.copy("data/checklists/checklist_supervised.docx", file)
+          file.copy("data-raw/checklists/checklist_supervised.docx", file)
         }
         if (input$Method == "Unsupervised: Topic Model") {
-          file.copy("data/checklists/checklist_unsupervised_TM.docx", file)
+          file.copy("data-raw/checklists/checklist_unsupervised_TM.docx", file)
         }
         if (input$Method == "Unsupervised: Text Scaling") {
-          file.copy("data/checklists/checklist_unsupervised_TS.docx", file)
+          file.copy("data-raw/checklists/checklist_unsupervised_TS.docx", file)
         }
       }
     )
