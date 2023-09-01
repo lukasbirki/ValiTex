@@ -22,6 +22,6 @@ rsconnect::writeManifest()
 #options(repos = repos)
 #
 
-devtools::install_github("lukasbirki/ValiTex")
+devtools::install_github("lukasbirki/ValiTex", force = T)
 
 ValiTex::run_app()
