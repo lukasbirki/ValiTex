@@ -11,3 +11,7 @@ $run_dev.*
 ^CODE_OF_CONDUCT\.md$
 ^app\.R$
 ^rsconnect$
+^packrat/
+^\.Rprofile$
+^codecov\.yml$
+^\.github$
