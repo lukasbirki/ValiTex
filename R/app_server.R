@@ -8,6 +8,7 @@ app_server <- function(input, output, session) {
   # Your application server logic
 
   output$table <- DT::renderDT({
+    data(framework)
     framework |>
       dplyr::select(Phase,  `Validation Step`, input$Method,Considerations,"Performance Criteria",Dimension,`Source / References`,ID) |>
       dplyr::rename(Status = input$Method,
