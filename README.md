@@ -1,21 +1,12 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 <img src="inst/app/www/logo_valitex.png" align="right" width="15%" height="15%"/>
 
 <!-- badges: start -->
-[![DOI](https://zenodo.org/badge/634831162.svg)](https://zenodo.org/badge/latestdoi/634831162)
-
-
 [![Project Status: Active -- The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![DOI](https://zenodo.org/badge/634831162.svg)](https://zenodo.org/badge/latestdoi/634831162)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Codecov test coverage](https://codecov.io/gh/lukasbirki/ValiTex/branch/main/graph/badge.svg)](https://app.codecov.io/gh/lukasbirki/ValiTex?branch=main)
 [![R-CMD-check](https://github.com/lukasbirki/ValiTex/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/lukasbirki/ValiTex/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
