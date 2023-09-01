@@ -1,10 +1,10 @@
 Package: ValiTex
-Title: ValiTex
+Title: ValiTex Checklist Shiny App
 Version: 0.0.0.9000
 Authors@R: 
     person("Lukas", "Birkenmaier", , "lukas.birkenmaier@outlook.de", role = c("cre", "aut"))
-Description: PKG_DESC.
-License: What license is it under?
+Description: This package contains the Shiny app implementation of the ValiTex Checklist, which accompanies the ValiTex framework for validating text-based measures of social science constructs. 
+License: CC BY-NC 4.0
 Imports: 
     config (>= 0.3.1),
     dplyr,

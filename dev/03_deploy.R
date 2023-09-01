@@ -58,5 +58,3 @@ rsconnect::deployApp(
   lint = FALSE,
   forceUpdate = TRUE
 )
-sessionInfo()
-remotes::install_local()

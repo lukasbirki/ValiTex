@@ -317,7 +317,7 @@ mod_ValiTex_shiny_ui <- function(id){
 mod_ValiTex_shiny_server <- function(id){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
-    df <- readxl::read_excel("data-raw/Framework.xlsx")
+    df <- readxl::read_excel("data/Framework.xlsx")
     output$table <- DT::renderDT({
       df |>
         dplyr::select(Phase, ID, `Validation Step`, input$Method,Considerations,"Performance Criteria",Dimension,`Source / References`) |>

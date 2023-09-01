@@ -18,7 +18,7 @@ rsconnect::deployApp()
 rsconnect::writeManifest()
 
 
-repos <- c("local" = "C:/Users/birkenls/Documents/Git-Projekte", "CRAN" = "https://cran.rstudio.com/")
-options(repos = repos)
+#repos <- c("local" = "C:/Users/birkenls/Documents/Git-Projekte", "CRAN" = "https://cran.rstudio.com/")
+#options(repos = repos)
 #
 
