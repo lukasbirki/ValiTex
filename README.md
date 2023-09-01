@@ -6,7 +6,7 @@ state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![DOI](https://zenodo.org/badge/634831162.svg)](https://zenodo.org/badge/latestdoi/634831162)
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+stable](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R-CMD-check](https://github.com/lukasbirki/ValiTex/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/lukasbirki/ValiTex/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
