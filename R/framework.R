@@ -1,5 +1,5 @@
-#' This is the raw dataset for the ValiTex checklist
+#' This is data to be included in my package
 #'
-#' @author Lukas Birkenmaier \email{lukas.birkenmaier@outlook.de}
-#' @references \url{no reference}
+#' @author My Name \email{blahblah@@roxygen.org}
+#' @references \url{data_blah.com}
 "framework"
