@@ -14,7 +14,7 @@ developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repo
 This repository contains the online checklist which accompanies the
 [ValiTex](https://lukasbirki.shinyapps.io/ValiTex/) framework for
 validating text-based measures of social science constructs by
-Birkenmaier et al. (2023 forthcoming). The framework provides clear
+Birkenmaier et al. (2023). The framework provides clear
 guidelines for best practices in validation, with a normative stance on
 what constitutes good validation evidence. For a detailed explanation,
 please refer to the description in [Birkenmaier et al.
