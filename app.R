@@ -8,3 +8,5 @@ options(shinyapps.locale.cache = FALSE)
 options("repos")
 
 ValiTex::run_app()
+
+
