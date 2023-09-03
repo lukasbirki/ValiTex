@@ -1,5 +1,5 @@
 globalVariables(
   c(
-    "framework2"
+    "framework"
   )
 )
