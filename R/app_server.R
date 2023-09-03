@@ -7,7 +7,7 @@
 app_server <- function(input, output, session) {
   # Your application server logic
   output$table <- DT::renderDT({
-    ValiTex::framework2 |>
+    framework2 |>
       dplyr::select(Phase,  `Validation Step`, input$Method,Considerations,"Performance Criteria",Dimension,`Source / References`,ID) |>
       dplyr::rename(Status = input$Method,
                     References = `Source / References`,
