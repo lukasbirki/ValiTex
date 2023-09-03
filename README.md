@@ -11,29 +11,29 @@ developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repo
 
 # ValiTex Checklist
 
-This repository contains the online checklist which accompanies the
-[ValiTex](https://lukasbirki.shinyapps.io/ValiTex/) framework for
+This repository contains the online checklist of the [ValiTex](https://lukasbirki.shinyapps.io/ValiTex/) framework for
 validating text-based measures of social science constructs by
-Birkenmaier et al. (2023). The framework provides clear
-guidelines for best practices in validation, with a normative stance on
-what constitutes good validation evidence. For a detailed explanation,
-please refer to the description in [Birkenmaier et al.
-(2023)](https://arxiv.org/abs/2307.02863) or the "Theoretical
-Background" section online webpage.
+[Birkenmaier et al. (2023)](https://arxiv.org/abs/2307.02863). The validation framework is designed to assist scholars in validly measuring social science constructs based on textual data. 
 
-## Link to the Webpage
+## User Instructions
 
-<https://lukasbirki.shinyapps.io/ValiTex/>
+### Installation
 
-You can also run the online checklist locally on your machine using R.
+You can run the online checklist locally on your machine using R.
 You can install the package holding the shiny application directly from
 Github using the `install_github` function from the `devtools` package
 as shown below. Please make sure, that you have the `devtools` package
 locally installed on your machine before starting the download.
 
 ``` r
+# To install the package
 install.packages("devtools")
 devtools::install_github("lukasbirki/ValiTex")
+
+# To load the package and data
+library(ValiTex)
+ValiTex::run_app()
+
 ```
 
 ## User Instructions
