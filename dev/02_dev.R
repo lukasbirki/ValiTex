@@ -67,7 +67,6 @@ usethis::use_github()
 usethis::use_github_action()
 # Chose one of the three
 # See https://usethis.r-lib.org/reference/use_github_action.html
-usethis::use_github_action_check_release()
 usethis::use_github_action_check_standard()
 usethis::use_github_action_check_full()
 # Add action for PR

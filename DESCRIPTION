@@ -1,22 +1,26 @@
 Package: ValiTex
-Title: ValiTex Checklist Shiny App
-Version: 0.0.0.9000
+Title: ValiTex Shiny App
+Version: 1.0
 Authors@R: 
     person("Lukas", "Birkenmaier", , "lukas.birkenmaier@outlook.de", role = c("cre", "aut"))
-Description: This package contains the Shiny app implementation of the ValiTex Checklist, which accompanies the ValiTex framework for validating text-based measures of social science constructs. 
+Description: ValiTex contains the Shiny app implementation of the ValiTex
+    Checklist, which accompanies the ValiTex framework for validating
+    text-based measures of social science constructs.
 License: CC BY-NC 4.0
+URL: https://github.com/lukasbirki/ValiTex
+BugReports: https://github.com/lukasbirki/ValiTex/issues
+Depends: 
+    R (>= 2.10)
 Imports: 
     config (>= 0.3.1),
     dplyr,
     DT,
     faq,
     golem (>= 0.4.1),
-    pkgload,
+    htmlwidgets,
     prompter,
     shiny (>= 1.7.4.1),
-    shinyjs,
-    htmlwidgets,
-    readxl
+    shinyjs
 Suggests: 
     spelling,
     testthat (>= 3.0.0)
@@ -25,5 +29,3 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 RoxygenNote: 7.2.3
-Depends: 
-    R (>= 2.10)

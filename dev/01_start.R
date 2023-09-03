@@ -20,13 +20,13 @@
 ##
 golem::fill_desc(
   pkg_name = "ValiTex", # The Name of the package containing the App
-  pkg_title = "PKG_TITLE", # The Title of the package containing the App
-  pkg_description = "PKG_DESC.", # The Description of the package containing the App
-  author_first_name = "AUTHOR_FIRST", # Your First Name
-  author_last_name = "AUTHOR_LAST", # Your Last Name
-  author_email = "AUTHOR@MAIL.COM", # Your Email
-  repo_url = NULL, # The URL of the GitHub Repo (optional),
-  pkg_version = "0.0.0.9000" # The Version of the package containing the App
+  pkg_title = "ValiTex Shiny App", # The Title of the package containing the App
+  pkg_description = "ValiTex contains the Shiny app implementation of the ValiTex Checklist, which accompanies the ValiTex framework for validating text-based measures of social science constructs.", # The Description of the package containing the App
+  author_first_name = "Lukas", # Your First Name
+  author_last_name = "Birkenmaier", # Your Last Name
+  author_email = "lukas.birkenmaier@outlook.de", # Your Email
+  repo_url = "https://github.com/lukasbirki/ValiTex", # The URL of the GitHub Repo (optional),
+  pkg_version = "1.0" # The Version of the package containing the App
 )
 
 ## Set {golem} options ----

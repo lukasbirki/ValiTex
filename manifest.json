@@ -93,19 +93,21 @@
       "Repository": null,
       "description": {
         "Package": "ValiTex",
-        "Title": "ValiTex Checklist Shiny App",
-        "Version": "0.0.0.9000",
+        "Title": "ValiTex Shiny App",
+        "Version": "1.0",
         "Authors@R": "person(\"Lukas\", \"Birkenmaier\", , \"lukas.birkenmaier@outlook.de\", role = c(\"cre\", \"aut\"))",
-        "Description": "This package contains the Shiny app implementation of the ValiTex Checklist, which accompanies the ValiTex framework for validating text-based measures of social science constructs.",
+        "Description": "ValiTex contains the Shiny app implementation of the ValiTex\nChecklist, which accompanies the ValiTex framework for validating\ntext-based measures of social science constructs.",
         "License": "CC BY-NC 4.0",
-        "Imports": "config (>= 0.3.1),\ndplyr,\nDT,\nfaq,\ngolem (>= 0.4.1),\npkgload,\nprompter,\nshiny (>= 1.7.4.1),\nshinyjs,\nhtmlwidgets,\nreadxl",
+        "URL": "https://github.com/lukasbirki/ValiTex",
+        "BugReports": "https://github.com/lukasbirki/ValiTex/issues",
+        "Depends": "R (>= 2.10)",
+        "Imports": "config (>= 0.3.1),\ndplyr,\nDT,\nfaq,\ngolem (>= 0.4.1),\nhtmlwidgets,\nprompter,\nshiny (>= 1.7.4.1),\nshinyjs",
         "Suggests": "spelling,\ntestthat (>= 3.0.0)",
         "Config/testthat/edition": "3",
         "Encoding": "UTF-8",
         "Language": "en-US",
         "LazyData": "true",
-        "RoxygenNote": "7.2.3",
-        "Depends": "R (>= 2.10)"
+        "RoxygenNote": "7.2.3"
       }
     },
     "askpass": {
@@ -3655,8 +3657,11 @@
     }
   },
   "files": {
+    ".github/workflows/pr-commands.yaml": {
+      "checksum": "08adeb401e763a29ad70cb773950c382"
+    },
     ".github/workflows/R-CMD-check.yaml": {
-      "checksum": "8a8abd2e35efe68bd19b9a8c18563b82"
+      "checksum": "e7fbbeadcb0b0ee4ebfadb59ebd3a35c"
     },
     ".here": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
@@ -3671,7 +3676,7 @@
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
     },
     "app.R": {
-      "checksum": "7bb38906c0b3b9e4ab4a5a5da2723d7b"
+      "checksum": "6b6e9e10e6b49b451e1b5e7dfea6c645"
     },
     "CODE_OF_CONDUCT.md": {
       "checksum": "e27937e904c2465fe80824b25dc9ff0e"
@@ -3701,13 +3706,13 @@
       "checksum": "cb4bd6adbd77a478586aa37b80cb9248"
     },
     "DESCRIPTION": {
-      "checksum": "ec7a22907597aea7c9a898c2acba6850"
+      "checksum": "28d70574ac8d970efc7a92d0c487c563"
     },
     "dev/01_start.R": {
-      "checksum": "414ed8cd30f8f5865a9013aec50ec17a"
+      "checksum": "d85f334a1d95f4d6192b313c59e339ee"
     },
     "dev/02_dev.R": {
-      "checksum": "539ff5427087868e601c08691082119e"
+      "checksum": "fb9e552a9c589e3f079f024cbab8a829"
     },
     "dev/03_deploy.R": {
       "checksum": "df68cf119ab19faa90859043fcd1e86d"
@@ -3743,7 +3748,7 @@
       "checksum": "6fef1b4a9ce5022c016d6cab87c8feea"
     },
     "inst/golem-config.yml": {
-      "checksum": "13b476ceb5fdc9449eeaa5eec70e1bc9"
+      "checksum": "1867680c8930c98b1aa8e0e9f08d917d"
     },
     "inst/WORDLIST": {
       "checksum": "6b73c21871381816e6ef3889f9f3acf7"
@@ -3755,7 +3760,7 @@
       "checksum": "eb32a8dff09564aea287fdd742e2140d"
     },
     "NAMESPACE": {
-      "checksum": "5d49c46627260b39197fbbcf7027e1d5"
+      "checksum": "10e8dce6c3c27ad82baaa0569d84079a"
     },
     "NEWS.md": {
       "checksum": "2d43fa2cd7a6ccea7168190f22b4c645"
