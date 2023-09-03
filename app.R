@@ -22,3 +22,4 @@ rsconnect::writeManifest()
 #options(repos = repos)
 #
 
+renv::restore()
