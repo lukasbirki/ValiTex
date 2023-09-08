@@ -26,6 +26,7 @@ app_server <- function(input, output, session) {
         escape = FALSE,
         class = 'cell-border stripe',
         options = list(
+          pageLength = -1,
           ordering = FALSE,
           dom = 'rit',
           columnDefs = list(list(visible = FALSE, targets = 1)),
@@ -70,23 +71,43 @@ app_server <- function(input, output, session) {
   # Downloadable word files of selected dataset
   output$Download_word <- shiny::downloadHandler(
     filename = function() {
-      paste("checklist_validity_",tolower(as.character(input$Method)), ".docx", sep = "")
-    },
+      if (input$Method == "A. Applying Dictionaries") {
+        "checklist_A_ValiTex.docx"
+      } else if (input$Method == "B. Classification using Traditional Supervised Machine Learning Model") {
+        "checklist_B_ValiTex.docx"
+      } else if (input$Method == "C. Classification using Finetuned Machine-Learning Model") {
+        "checklist_C_ValiTex.docx"
+      } else if (input$Method == "D. Zero-Shot/Few-Shot Classification (known output categories)") {
+        "checklist_D_ValiTex.docx"
+      }  else if (input$Method == "E. Zero-Shot/Few-Shot Classification (unknown output categories)") {
+        "checklist_E_ValiTex.docx"
+      } else if (input$Method == "F. Text Scaling") {
+        "checklist_F_ValiTex.docx"
+      }  else if (input$Method == "G. Topic Modelling") {
+        "checklist_G_ValiTex.docx"
+      }
+        },
     content = function(file) {
-      if (input$Method == "Dictionary") {
-        file.copy("data-raw/checklists/checklist_dictionary.docx", file)
+      if (input$Method == "A. Applying Dictionaries") {
+        file.copy("data-raw/checklists/checklist_A_ValiTex.docx", file)
       }
-      if (input$Method == "Supervised") {
-        file.copy("data-raw/checklists/checklist_supervised.docx", file)
+      if (input$Method == "B. Classification using Traditional Supervised Machine Learning Model") {
+        file.copy("data-raw/checklists/checklist_B_ValiTex.docx", file)
       }
-      if (input$Method == "Unsupervised: Topic Model") {
-        file.copy("data-raw/checklists/checklist_unsupervised_TM.docx", file)
+      if (input$Method == "C. Classification using Finetuned Machine-Learning Model") {
+        file.copy("data-raw/checklists/checklist_C_ValiTex.docx", file)
       }
-      if (input$Method == "Unsupervised: Text Scaling") {
-        file.copy("data-raw/checklists/checklist_unsupervised_TS.docx", file)
+      if (input$Method == "D. Zero-Shot/Few-Shot Classification (known output categories)") {
+        file.copy("data-raw/checklists/checklist_D_ValiTex.docx", file)
       }
-      if (input$Method == "API") {
-        file.copy("data-raw/checklists/checklist_API.docx", file)
+      if (input$Method == "E. Zero-Shot/Few-Shot Classification (unknown output categories)") {
+        file.copy("data-raw/checklists/checklist_E_ValiTex.docx", file)
+      }
+      if (input$Method == "F. Text Scaling") {
+        file.copy("data-raw/checklists/checklist_F_ValiTex.docx", file)
+      }
+      if (input$Method == "G. Topic Modelling") {
+        file.copy("data-raw/checklists/checklist_G_ValiTex.docx", file)
       }
     }
   )
@@ -101,5 +122,54 @@ app_server <- function(input, output, session) {
 
     cat(bib_entry)
   })
+
+
+
+  data <- data.frame(
+    Use_Case = c("A", "B", "C", "D", "E", "F", "G"),
+    Use_Case_Description = c(
+      "Applying Dictionaries",
+      "Classification using Traditional Supervised Machine Learning Model",
+      "Classification using Finetuned Machine-Learning Model",
+      "Zero-Shot/Few-Shot Classification (known output categories)",
+      "Zero-Shot/Few-Shot Classification (unknown output categories)",
+      "Topic Modelling",
+      "Text Scaling"
+    ),
+    Learning_Approach = c(
+      "Rule-Based",
+      "Supervised",
+      "Semi-Supervised",
+      "Semi-Supervised",
+      "Unsupervised",
+      "Unsupervised",
+      "Unsupervised"
+    ),
+    Training_Finetuning_Required = c("No", "Yes", "Yes", "No", "No", "No", "No"),
+    Known_Output_Categories = c("Yes", "Yes", "Yes", "Yes", "No", "No", "Yes"),
+    Description = c(
+      "Assign scores to text units using predefined word lists",
+      "Assign known output categories based on labelled training data",
+      "Assign known output categories based on a fine-tuning process on a small subset of labelled data",
+      "Assign known output categories without any finetuning on labelled data",
+      "Assign unknown output categories without any finetuning on labelled data",
+      "Assign topics without any labeled data",
+      "Assign scale scores without any labelled data"
+    ),
+    Example = c(
+      "A dictionary assigns polarity values ranging from -1 to 1 to each known text unit",
+      "A Logistic regression model is trained on labelled customer reviews and predicts 'positive' and 'negative' reviews",
+      "A pretrained BERT model is fine-tuned on labelled social media posts and predicts 'offensive' and 'non-offensive' posts",
+      "GPT-3 predicts 'political' or 'non-political' speeches",
+      "GPT-3 suggests topics for texts (not prescribed by the researcher)",
+      "An LDA topic model generates 13 topics coherent topics",
+      "A Wordfish model assigns scale values from -1 to 1 to politicians’ speeches"
+    )
+  )
+
+  output$mytable_use_cases <- renderTable({
+    data
+  }, rownames = FALSE)
+
 
 }

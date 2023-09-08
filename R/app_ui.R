@@ -144,18 +144,16 @@ app_ui <- function(request) {
                                                  span(style="color:#ed969e; font-weight: bold", "recommended "), "or ",
                                                  span(style="color:#96caed; font-weight: bold", "optional "),"depending on their relevance.", sep = ""),"As outlined in the corresponding paper, researchers should initially follow the order of the phases, starting with the substantive validation steps and ending with external validation steps while continuously considering robustness checks.
                 However, researchers might adapt this process to their individual use case."),
-                                      p("ValiTex accounts for differences in validation practices across text-based methods and research contexts. At present, ValiTex differentiates between the three main types of text-based methods. Furthermore, there is an option to select validation for APIs:"),
-                                      tags$ul(tags$li(tags$b("Dictionary:"),"Rule-based methods that include words or phrases along with their respective meanings or sentiments",prompter::add_prompt(tags$span(class = "question-button", "?"),
-                                                                                                                                                                                                       position = "bottom", message = "E.g., SentiWS, LIWC")),
-                                              tags$li(tags$b("Supervised:"),"Machine-learning methods that include some form of training data and test set and classification task",prompter::add_prompt(tags$span(class = "question-button", "?"),
-                                                                                                                                                                                                         position = "bottom", message = "E.g., Logistic regressiion, CNN, BERT")),
-                                              tags$li(tags$b("Unsupervised (Topic Model):"),"Unsupervised methods that generate topics based on word-coocurrences",prompter::add_prompt(tags$span(class = "question-button", "?"),
-                                                                                                                                                                                        position = "bottom", message = "E.g., Latent Dirichlet Allocation (LDA)")),
-                                              tags$li(tags$b("Unsupervised (Text Scaling)"),"Unsupervised methods that produce scores that relate to some underlying scale based on word-coocurrences", prompter::add_prompt(tags$span(class = "question-button", "?"),
-                                                                                                                                                                                                                             position = "bottom", message = "E.g., Wordfish, Wordscores")),
-                                              tags$li(tags$b("API (Application Programming Interfaces)"),"Interfaces which process texts with no access to the respective text model", prompter::add_prompt(tags$span(class = "question-button", "?"),
-                                                                                                                                                                                                            position = "bottom", message = "E.g., ChatGPT API, Perspective API for toxicity"),tags$i("(still under development)")),
-                                      ),
+                                      # tags$img(
+                                      #   src = "www/use_cases.png",
+                                      #   style = "display: block; margin: 0 auto; width: 50%;"
+                                      # ),
+                                      p("ValiTex accounts for different use cases in validation practices across text-based methods and research contexts.
+                                        At present, ValiTex differentiates between the seven use cases, which are highlighted in the Table below (click on it for a detailed view)"),
+                                      div(
+                                        tags$img(src = "www/use_cases.png", id = "myimage", style = "margin-top: 40px;margin-bottom: 0px; cursor: pointer;"),
+                                        p(class = "caption", "Table: Use Cases (click to expand)")),
+
                                       tags$p(tags$b("Please start by choosing a method from the drop-down menu below."), "The complete list of validation steps is also available on ",
                                              tags$a(href="https://github.com/lukasbirki/ValiTex-Checklist/tree/main/data",target="_blank",
                                                     "Github.")),
@@ -168,7 +166,14 @@ app_ui <- function(request) {
 
                                                      # Input: Choose dataset
                                                      selectInput("Method", "What text-based method do you want to validate? Please choose below:",
-                                                                 choices = c("--Please select a method--","Dictionary","Supervised", "Unsupervised: Topic Model", "Unsupervised: Text Scaling","API"),
+                                                                 choices = c("--Please select a method--",
+                                                                             "A. Applying Dictionaries",
+                                                                             "B. Classification using Traditional Supervised Machine Learning Model",
+                                                                             "C. Classification using Finetuned Machine-Learning Model",
+                                                                             "D. Zero-Shot/Few-Shot Classification (known output categories)",
+                                                                             "E. Zero-Shot/Few-Shot Classification (unknown output categories)",
+                                                                             "F. Text Scaling",
+                                                                             "G. Topic Modelling"),
                                                                  selected = ""),
 
 

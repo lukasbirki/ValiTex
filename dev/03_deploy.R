@@ -16,6 +16,7 @@
 ## Run checks ----
 ## Check the package before sending to prod
 devtools::check()
+
 rhub::check_for_cran()
 
 # Deploy
