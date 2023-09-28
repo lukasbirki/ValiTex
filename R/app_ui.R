@@ -34,8 +34,10 @@ app_ui <- function(request) {
                                       "The framework is designed to help researchers that aim to measure social science constructs using computational text analysis to validate their empirical measures."),
                                     h3("Overview"),
                                     p("Validation is a critical task in text analysis and natural language processing.
-                               As its core, validation requires different activities to demonstrate that a method measures what it purports to measure.
-                               Recently, there has been a skyrocketing number of studies using computational text analysis to measure social science constructs from text,
+                               As its core, validation requires different activities to demonstrate that a method measures what it purports to measure ",
+                                      tags$a(href="https://psycnet.apa.org/record/1951-06471-001",target="_blank",
+                                             "(Cureton, 1951)."),
+                               "Recently, there has been a skyrocketing number of studies using computational text analysis to measure social science constructs from text,
                                such as sexism, populist language, or ideology.
                                However, validating these measures is challenging, especially because textual data can often be interpreted differently."),
                                     p("One crucial problem in the validation of text-based measures is the lack of concepual clarity of how to conduct validation.

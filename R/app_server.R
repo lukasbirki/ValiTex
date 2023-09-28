@@ -71,42 +71,44 @@ app_server <- function(input, output, session) {
   # Downloadable word files of selected dataset
   output$Download_word <- shiny::downloadHandler(
     filename = function() {
-      if (input$Method == "A. Applying Dictionaries") {
+      selected_method <- tolower(input$Method)
+      if (selected_method == "a. applying dictionaries") {
         "checklist_A_ValiTex.docx"
-      } else if (input$Method == "B. Classification using Traditional Supervised Machine Learning Model") {
+      } else if (selected_method == "b. classification using traditional supervised machine learning model") {
         "checklist_B_ValiTex.docx"
-      } else if (input$Method == "C. Classification using Finetuned Machine-Learning Model") {
+      } else if (selected_method == "c. classification using finetuned machine-learning model") {
         "checklist_C_ValiTex.docx"
-      } else if (input$Method == "D. Zero-Shot/Few-Shot Classification (known output categories)") {
+      } else if (selected_method == "d. zero-shot/few-shot classification (known output categories)") {
         "checklist_D_ValiTex.docx"
-      }  else if (input$Method == "E. Zero-Shot/Few-Shot Classification (unknown output categories)") {
+      } else if (selected_method == "e. zero-shot/few-shot classification (unknown output categories)") {
         "checklist_E_ValiTex.docx"
-      } else if (input$Method == "F. Text Scaling") {
+      } else if (selected_method == "f. text scaling") {
         "checklist_F_ValiTex.docx"
-      }  else if (input$Method == "G. Topic Modelling") {
+      } else if (selected_method == "g. topic modelling") {
         "checklist_G_ValiTex.docx"
       }
-        },
+    },
     content = function(file) {
-      if (input$Method == "A. Applying Dictionaries") {
+      selected_method <- tolower(input$Method)
+      if (selected_method == "a. applying dictionaries") {
         file.copy("data-raw/checklists/checklist_A_ValiTex.docx", file)
       }
-      if (input$Method == "B. Classification using Traditional Supervised Machine Learning Model") {
+      if (selected_method == "b. classification using traditional supervised machine learning model") {
         file.copy("data-raw/checklists/checklist_B_ValiTex.docx", file)
       }
-      if (input$Method == "C. Classification using Finetuned Machine-Learning Model") {
+      if (selected_method == "c. classification using finetuned machine-learning model") {
         file.copy("data-raw/checklists/checklist_C_ValiTex.docx", file)
       }
-      if (input$Method == "D. Zero-Shot/Few-Shot Classification (known output categories)") {
+      if (selected_method == "d. zero-shot/few-shot classification (known output categories)") {
         file.copy("data-raw/checklists/checklist_D_ValiTex.docx", file)
       }
-      if (input$Method == "E. Zero-Shot/Few-Shot Classification (unknown output categories)") {
+      if (selected_method == "e. zero-shot/few-shot classification (unknown output categories)") {
         file.copy("data-raw/checklists/checklist_E_ValiTex.docx", file)
       }
-      if (input$Method == "F. Text Scaling") {
+      if (selected_method == "f. text scaling") {
         file.copy("data-raw/checklists/checklist_F_ValiTex.docx", file)
       }
-      if (input$Method == "G. Topic Modelling") {
+      if (selected_method == "g. topic modelling") {
         file.copy("data-raw/checklists/checklist_G_ValiTex.docx", file)
       }
     }

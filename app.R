@@ -7,6 +7,6 @@ options( "golem.app.prod" = TRUE)
 options(shinyapps.locale.cache = FALSE)
 options("repos")
 
-Valitex::run_app()
+ValiTex::run_app()
 
 
