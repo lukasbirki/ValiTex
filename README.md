@@ -53,6 +53,14 @@ case.
 ValiTex accounts for differences in validation practices across
 text-based methods and research contexts. At present, ValiTex
 differentiates between seven use cases:
+
+<style>
+table {
+  font-size: 0.9em; /* Adjust the font size to your preference */
+  /* Add other CSS styles here if needed */
+}
+</style>
+
 | # | Use Case                                          | Learning Approach              | Training / Finetuning Data Required | Known Output Categories | Description                                           | Example                                                |
 |---|---------------------------------------------------|--------------------------------|----------------------------------|-------------------------|-------------------------------------------------------|--------------------------------------------------------|
 | A | Applying Dictionaries                             | Rule-Based                     | No                               | Yes                     | Assign scores to text units using predefined word lists | A dictionary assigns polarity values ranging from -1 to 1 to each known text unit |
