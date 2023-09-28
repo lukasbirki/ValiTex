@@ -42,27 +42,27 @@ This application generates an adaptable checklist that you can use to
 validate your text-based measures. Each row within the table corresponds
 to one validation step (i.e., a single reported and clearly demarcated
 validation activity). Validation steps can be either mandatory or
-optional depending on their relevance . As outlined in the corresponding
+optional depending on their relevance. As outlined in the corresponding
 paper, researchers should initially follow the order of the phases,
 starting with the substantive validation steps and ending with external
 validation steps while continuously considering robustness checks.
 However, researchers might adapt this process to their individual use
 case.
+### Use Cases
 
 ValiTex accounts for differences in validation practices across
 text-based methods and research contexts. At present, ValiTex
-differentiates between four broad types of text-based methods:
+differentiates between seven use cases:
+| # | Use Case                                          | Learning Approach              | Training / Finetuning Data Required | Known Output Categories | Description                                           | Example                                                |
+|---|---------------------------------------------------|--------------------------------|----------------------------------|-------------------------|-------------------------------------------------------|--------------------------------------------------------|
+| A | Applying Dictionaries                             | Rule-Based                     | No                               | Yes                     | Assign scores to text units using predefined word lists | A dictionary assigns polarity values ranging from -1 to 1 to each known text unit |
+| B | Classification using Traditional Supervised ML    | Supervised                     | Yes                              | Yes                     | Assign known output categories based on labelled training data | A Logistic regression model is trained on labelled customer reviews and predicts "positive" and "negative" reviews |
+| C | Classification using Fine-tuned ML Model          | Semi-Supervised                | Yes                              | Yes                     | Assign known output categories based on a fine-tuning process on a small subset of labelled data | A pretrained BERT model is fine-tuned on labelled social media posts and predicts "offensive" and "non-offensive" posts |
+| D | Zero-Shot/Few-Shot Classification (known categories) | Semi-Supervised             | No                               | Yes                     | Assign known output categories without any finetuning on labelled data | GPT-3 predicts "political" or "non-political" speeches |
+| E | Zero-Shot/Few-Shot Classification (unknown categories) | Unsupervised               | No                               | No                      | Assign unknown output categories without any finetuning on labelled data | GPT-3 suggests topics for texts (not prescribed by the researcher) |
+| F | Topic Modelling                                    | Unsupervised                  | No                               | No                      | Assign topics without any labeled data                 | An LDA topic model generates 13 coherent topics       |
+| G | Text Scaling                                      | Unsupervised                  | No                               | Yes                     | Assign scale scores without any labelled data          | A Wordfish model assigns scale values from -1 to 1 to politicians’ speeches |
 
--   Dictionary: Rule-based methods that include words or phrases along
-    with their respective meanings or sentiments (e.g., SentiWS)
--   Supervised: Machine-learning methods that include some form of
-    training data and test set and/or classification task (e.g., SVM,
-    BERT)
--   Unsupervised (Topic Model): Unsupervised methods that generate
-    topics based on word-occurrences (e.g., LDA)
--   Unsupervised (Text Scaling) Unsupervised methods that produce scores
-    that relate to some underlying scale based on word-occurrences
-    (e.g., Wordfish, Wordscores)
 
 The complete list of validation steps is also available on
 [Github](https://github.com/lukasbirki/ValiTex-Checklist/tree/main/data)
