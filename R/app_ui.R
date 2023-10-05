@@ -28,54 +28,41 @@ app_ui <- function(request) {
                                       )
                                     ),
                                     h3("About"),
-                                    p("This webpage accompanies the ", tags$a(href="https://github.com/lukasbirki/ValiTex-Checklist",target="_blank",
-                                                                              "ValiTex"),"framework by", tags$a(href="https://arxiv.org/abs/2307.02863",target="_blank",
-                                                                                                                "Birkenmaier et al. (2023)."),
-                                      "The framework is designed to help researchers that aim to measure social science constructs using computational text analysis to validate their empirical measures."),
+                                    p("ValiTex is a novel validation framework for computational text-based measures of social science constructs",tags$a(href="https://arxiv.org/abs/2307.02863",target="_blank",
+                                                                                                                                                                  "(Birkenmaier et al., 2023)."),"The framework offers practical guidance for researchers and users to conduct and communicate validation."),
+
                                     h3("Overview"),
                                     p("Validation is a critical task in text analysis and natural language processing.
                                As its core, validation requires different activities to demonstrate that a method measures what it purports to measure ",
                                       tags$a(href="https://psycnet.apa.org/record/1951-06471-001",target="_blank",
                                              "(Cureton, 1951)."),
-                               "Recently, there has been a skyrocketing number of studies using computational text analysis to measure social science constructs from text,
-                               such as sexism, populist language, or ideology.
-                               However, validating these measures is challenging, especially because textual data can often be interpreted differently."),
-                                    p("One crucial problem in the validation of text-based measures is the lack of concepual clarity of how to conduct validation.
-                              This expresses itself, among others, in the absence of commonly-shared terminology and general framework that provides guidance to do so.
-                                To guide researchers who aim to measure social science constructs based on textual data, we therefore present a novel validation framework for text analysis called ValiTex.
-                                Conceptually, the framework consists of two components:"),
-                                    tags$ul(
-                                      tags$li(
-                                        style = "margin-bottom: 10px;",
-                                        tags$span(class = "glyphicon glyphicon-home"),
-                                        tags$b("Conceptual Model:"),
-                                        "General structure along distinct phases on how to approach validation"),
-                                      tags$li(
-                                        tags$span(class = "glyphicon glyphicon-check"),
+                               " However, validating text-based measures can be challenging",tags$a(href="https://methods.sagepub.com/book/content-analysis-4e",target="_blank",
+                                                                                                    "(Krippendorf, 2018).")),
 
-                                        tags$b("Checklist:"),"A list of concrete validation steps for each phase of the conceptual model"),),
-                                    p("If you want to learn more about the components of ValiTex, please click on the respective
-                  section below or have a look at our",tags$a(href="https://arxiv.org/abs/2307.02863",target="_blank",
+                                    p("Therefore, any empirical measure needs to be validated. One crucial problem in the validation of text-based measures, however, is the lack of concepual clarity on how to conduct validation.
+
+                                    To provide practical guidance for researchers and users to conduct and communicate validation, ValiTex provides a flexible and consistent appraoch to validation."),
+                               p("At its core, ValiTex requires three types of validation evidence: substantive, structural, and external evidence"),
+                               tags$ul(
+                                 tags$li(p(tags$b(tags$code("Substantive Evidence:")), "Requires to outline the",tags$b(" theoretical underpinning")," of the measure.")),
+                                 tags$li(p(tags$b(tags$code("Structural Evidence:")), "Requires to examine and evaluate",tags$b("properties of the model and its measures"),)),
+                                 tags$li(p(tags$b(tags$code("External Evidence:")), "Requires to test for how the measure relates to",tags$b("other independent information or criteria"),)),),
+                                  p("The framework is complemented by a checklist that defines and outlines empirical validation steps available to collect validity evidence for different use cases."),
+                               p("If you want to learn more about the framework and the checklist, please click on the respective section below or have a look at our",tags$a(href="https://arxiv.org/abs/2307.02863",target="_blank",
                                                               "Working Paper.")),
+
 
                                     tags$style(
                                       HTML(".tabset { width: 80%; }")
                                     ),
                                     div(style = "width: 95%; margin: auto;",tabsetPanel(
                                       tabPanel(
-                                        title = HTML(paste('<span class="glyphicon glyphicon-home"></span>', "Conceptual Model")),
+                                        title = HTML(paste('<span class="glyphicon glyphicon-home"></span>', "Framework")),
                                         value = "r",
-                                        h3("Conceptual Model"),
-                                        p("The conceptual model defines three major phases which researchers should follow when validating computational text-based measures:"),
-                                        tags$ul(
-                                          tags$li(p(tags$b(tags$code("Substantive Phase:")), "The substantive phase comprises the",tags$b(" theoretical underpinning")," of the measure.
-                              It entails all validation steps which ensure the adequacy of the measurement process regarding the operationalization of the construct."
-                                          )),
-                                          tags$li(p(tags$b(tags$code("Structural Phase:")), "The structural phase includes the evaluation of the",tags$b("properties of the model and its measures"),
-                                                    "It entails all validation steps to carefully examine and evaluate the characteristics of the textual model and its output and to identify  biases or errors.")),
-                                          tags$li(p(tags$b(tags$code("External Phase:")), "The external phase comprises the",tags$b("relationship with unrelated information."),
-                                                    "It entails all validation steps that tests for how the measures relate to to independent measures or exogenous events."
-                                          )),),
+                                        h3("Framework"),
+                                        p("The framework is rooted in the well-established principles of measurement theory found within the psychometric literature which offers the most comprehensive and cohesive conception of validity for social science research.
+                                          The complete framework is visually depicted in Figure 1."),
+
                                         div(
                                           tags$img(src = "www/framework.png", id = "myimage", style = "margin-top: 40px;margin-bottom: 40px; cursor: pointer;"),
                                           p(class = "caption", "Figure 1: Conceptual Model (click to expand)")),
@@ -119,10 +106,7 @@ app_ui <- function(request) {
                       There, you can generate your own checklist depending on the type of text method used. Furthermore, you will be able to
                       download a Word template which you can fill out on your own and attach to your publication."),
                                         div(tags$img(src = "www/checklist.png", id = "myimagecheck", style = "margin-top: 40px;margin-bottom: 40px; cursor: pointer;"),
-
-                                            p(class = "caption", "Figure 2: Screenshot Checklist (click to expand)"))
-                                        ,
-                                      )),
+                                            p(class = "caption", "Figure 2: Screenshot Checklist (click to expand)")),)),
                                       div(class = "footer",
                                           p("Contact:",a(" lukas.birkenmaier@gesis.org", href = "lukas.birkenmaier@gesis.org"),
                                             " | See also the repository on GitHub!",
@@ -144,14 +128,13 @@ app_ui <- function(request) {
                                     p(HTML(paste("This application generates an adaptable checklist that you can use to validate your text-based measures.
                 Each row within the table corresponds to one validation step (i.e., a single reported and clearly demarcated validation activity). Validation steps can be either ",
                                                  span(style="color:#ed969e; font-weight: bold", "recommended "), "or ",
-                                                 span(style="color:#96caed; font-weight: bold", "optional "),"depending on their relevance.", sep = ""),"As outlined in the corresponding paper, researchers should initially follow the order of the phases, starting with the substantive validation steps and ending with external validation steps while continuously considering robustness checks.
-                However, researchers might adapt this process to their individual use case."),
+                                                 span(style="color:#96caed; font-weight: bold", "optional "),"depending on their relevance.", sep = "")),
                                       # tags$img(
                                       #   src = "www/use_cases.png",
                                       #   style = "display: block; margin: 0 auto; width: 50%;"
                                       # ),
                                       p("ValiTex accounts for different use cases in validation practices across text-based methods and research contexts.
-                                        At present, ValiTex differentiates between the seven use cases, which are highlighted in the Table below (click on it for a detailed view)"),
+                                        At present, ValiTex differentiates between seven use cases, which are highlighted in the Table below (click on it for a detailed view)"),
                                       div(
                                         tags$img(src = "www/use_cases.png", id = "myimage", style = "margin-top: 40px;margin-bottom: 0px; cursor: pointer;"),
                                         p(class = "caption", "Table: Use Cases (click to expand)")),
