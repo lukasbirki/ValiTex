@@ -39,7 +39,7 @@ golem::add_dockerfile_with_renv()
 ## If you want to deploy to ShinyProxy
 golem::add_dockerfile_with_renv_shinyproxy()
 
-golem::add_dockerfile_with_renv_heroku()
+golem::add_dockerfile_heroku()
 
 
 # Deploy to Posit Connect or ShinyApps.io

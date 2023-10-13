@@ -238,7 +238,7 @@ app_ui <- function(request) {
                            tabPanel("FAQ",
                                     h3("Frequently asked questions"),
                                     p("Here you will find answers to frequently asked questions about ValiTex If you have any questions that are not addressed here, please feel free to contact us!
-            For a detailed description of the ValiTex framework, please refer to the",tags$a(href="https://github.com/lukasbirki/ValiTex-Checklist",target="_blank",
+            For a detailed description of the ValiTex framework, please refer to the",tags$a(href="https://arxiv.org/ftp/arxiv/papers/2307/2307.02863.pdf",target="_blank",
                                                                                              "working paper.")),
                                     div(faq::faq(data = df_daq, elementId = "faq", faqtitle = "")),
                            ),
