@@ -13,10 +13,10 @@ app_server <- function(input, output, session) {
                     References = `Source / References`,
                     Reasoning = "Performance Criteria") |>
       dplyr::mutate(Status = dplyr::case_when(
-        (Status == "R" ~ "Recommended"),
-        (Status == "O" ~ "Optional"),
-        T ~ "n.a.")) |>
-      dplyr::filter(Status != "n.a.") |>
+        (Status == "Core" ~ "Context-Independent"),
+        (Status == "Context-spefic" ~ "Context-Specific"),
+        T ~ "not applicable")) |>
+      dplyr::filter(Status != "not applicable") |>
       dplyr::mutate(Phase = factor(Phase, levels = c("Substantive Phase", "Structural Phase", "External Phase", "Continuous Evaluation: Robustness Checks"))) |>
       dplyr::mutate(" " = '<input type="checkbox" name="select_row">', .before = 1) -> df_output
 
@@ -54,7 +54,7 @@ app_server <- function(input, output, session) {
       DT::formatStyle(
         "Status",
         valueColumns = "Status",
-        backgroundColor = DT::styleEqual(c("Recommended", "Optional"), c("#f8d7da", "#d7ebf8")),
+        backgroundColor = DT::styleEqual(c("Context-Independent", "Context-Specific"), c("#f8d7da", "#d7ebf8")),
         justifyContent = "center",
         backgroundOpacity = 0
 
@@ -72,45 +72,31 @@ app_server <- function(input, output, session) {
   output$Download_word <- shiny::downloadHandler(
     filename = function() {
       selected_method <- tolower(input$Method)
-      if (selected_method == "a. applying dictionaries") {
+      if (selected_method == "a. dictionaries") {
         "checklist_A_ValiTex.docx"
-      } else if (selected_method == "b. classification using traditional supervised machine learning model") {
+      } else if (selected_method == "b. (semi-) supervised classification") {
         "checklist_B_ValiTex.docx"
-      } else if (selected_method == "c. classification using finetuned machine-learning model") {
+      } else if (selected_method == "c. prompt-based classification using llms") {
         "checklist_C_ValiTex.docx"
-      } else if (selected_method == "d. zero-shot/few-shot classification (known output categories)") {
+      } else if (selected_method == "d. topic modelling") {
         "checklist_D_ValiTex.docx"
-      } else if (selected_method == "e. zero-shot/few-shot classification (unknown output categories)") {
-        "checklist_E_ValiTex.docx"
-      } else if (selected_method == "f. text scaling") {
-        "checklist_F_ValiTex.docx"
-      } else if (selected_method == "g. topic modelling") {
-        "checklist_G_ValiTex.docx"
       }
     },
     content = function(file) {
       selected_method <- tolower(input$Method)
-      if (selected_method == "a. applying dictionaries") {
+      if (selected_method == "a. dictionaries") {
         file.copy("data-raw/checklists/checklist_A_ValiTex.docx", file)
       }
-      if (selected_method == "b. classification using traditional supervised machine learning model") {
+      if (selected_method == "b. (semi-) supervised classification") {
         file.copy("data-raw/checklists/checklist_B_ValiTex.docx", file)
       }
-      if (selected_method == "c. classification using finetuned machine-learning model") {
+      if (selected_method == "c. prompt-based classification using llms") {
         file.copy("data-raw/checklists/checklist_C_ValiTex.docx", file)
       }
-      if (selected_method == "d. zero-shot/few-shot classification (known output categories)") {
+      if (selected_method == "d. topic modelling") {
         file.copy("data-raw/checklists/checklist_D_ValiTex.docx", file)
       }
-      if (selected_method == "e. zero-shot/few-shot classification (unknown output categories)") {
-        file.copy("data-raw/checklists/checklist_E_ValiTex.docx", file)
-      }
-      if (selected_method == "f. text scaling") {
-        file.copy("data-raw/checklists/checklist_F_ValiTex.docx", file)
-      }
-      if (selected_method == "g. topic modelling") {
-        file.copy("data-raw/checklists/checklist_G_ValiTex.docx", file)
-      }
+
     }
   )
   output$citationOutput <- renderPrint({

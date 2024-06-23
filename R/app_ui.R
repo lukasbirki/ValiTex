@@ -13,14 +13,14 @@ app_ui <- function(request) {
       fluidPage(theme = "flatly",
                 shinyjs::useShinyjs(),
                 prompter::use_prompt(),
-                windowTitle = "ValiTex Framework",  # Text displayed in the browser window title
-                navbarPage(title = "ValiTex",
+                windowTitle = "ValiText Framework",  # Text displayed in the browser window title
+                navbarPage(title = "ValiText",
                            theme = "navbar-default",
                            #Background ----
                            tabPanel("Home",
 
                                     value = "home",
-                                    h2("ValiTex - A Validation Framework for Computational Text-based Measures of Social Science Constructs", align = "center"),
+                                    h2("ValiText - A Validation Framework for Computational Text-based Measures of Social Constructs", align = "center"),
                                     h4("Beta Version 0.9", align = "center"),
                                     fluidRow(
                                       column(width = 12, align = "center",
@@ -28,8 +28,9 @@ app_ui <- function(request) {
                                       )
                                     ),
                                     h3("About"),
-                                    p("ValiTex is a novel validation framework for computational text-based measures of social science constructs",tags$a(href="https://arxiv.org/abs/2307.02863",target="_blank",
-                                                                                                                                                                  "(Birkenmaier et al., 2023)."),"The framework offers practical guidance for researchers and users to conduct and communicate validation."),
+                                    p("ValiText is a novel validation framework for computational text-based measures of social constructs",
+                                      tags$a(href="https://arxiv.org/abs/2307.02863",target="_blank",
+                                             "(Birkenmaier et al., 2024)."),"The framework offers practical guidance for researchers and users to conduct and document validation for computational text analysis."),
 
                                     h3("Overview"),
                                     p("Validation is a critical task in text analysis and natural language processing.
@@ -41,10 +42,10 @@ app_ui <- function(request) {
 
                                     p("Therefore, any empirical measure needs to be validated. One crucial problem in the validation of text-based measures, however, is the lack of concepual clarity on how to conduct validation.
 
-                                    To provide practical guidance for researchers and users to conduct and communicate validation, ValiTex provides a flexible and consistent appraoch to validation."),
-                               p("At its core, ValiTex requires three types of validation evidence: substantive, structural, and external evidence"),
+                                    To provide practical guidance for researchers and users to conduct and communicate validation, ValiText provides a flexible and consistent appraoch to validation."),
+                               p("At its core, ValiText requires three types of validation evidence: substantive, structural, and external evidence"),
                                tags$ul(
-                                 tags$li(p(tags$b(tags$code("Substantive Evidence:")), "Requires to outline the",tags$b(" theoretical underpinning")," of the measure.")),
+                                 tags$li(p(tags$b(tags$code("Substantive Evidence:")), "Requires to outline the",tags$b(" theoretical underpinning")," of the measure")),
                                  tags$li(p(tags$b(tags$code("Structural Evidence:")), "Requires to examine and evaluate",tags$b("properties of the model and its measures"),)),
                                  tags$li(p(tags$b(tags$code("External Evidence:")), "Requires to test for how the measure relates to",tags$b("other independent information or criteria"),)),),
                                   p("The framework is complemented by a checklist that defines and outlines empirical validation steps available to collect validity evidence for different use cases."),
@@ -71,40 +72,34 @@ app_ui <- function(request) {
                                         title = HTML(paste('<span class="glyphicon glyphicon-check"></span>', "Checklist")),
                                         value = "r",
                                         h3("Checklist"),
-                                        p("The dynamic checklist then provides a comprehensive list of validation steps for each phase within the structural model.
-                    Each validation step comes with a set of information, such as",
+                                        p("The checklist provides a comprehensive list of validation steps for each phase within the framework.
+                    Each validation step comes with a set of additional , such as",
 
                                           tags$table(  style = "border-collapse: separate; border-spacing: 11px;",
 
                                                        tags$tr(
-                                                         tags$th("Variable"),
-                                                         tags$th("Information")
-                                                       ),
-                                                       tags$tr(
-                                                         tags$td(tags$code("Status")),
-                                                         tags$td("Relevance of the validation step (either recommended or optional)")
+                                                         tags$td(tags$code("Validation Step")),
+                                                         tags$td("Name of the validation step")
                                                        ),
                                                        tags$tr(
                                                          tags$td(tags$code("Considerations")),
-                                                         tags$td("Detailed description of the validation step")
+                                                         tags$td("Detailed Description of the validation step")
                                                        ),
                                                        tags$tr(
-                                                         tags$td(tags$code("Reasoning")),
-                                                         tags$td("Information on how to evaluate the validation step ")
-                                                       ),
-                                                       tags$tr(
-                                                         tags$td(tags$code("Dimension")),
-                                                         tags$td("The type of validation step as defined in the conceptual model")
+                                                         tags$td(tags$code("Performance Criteria")),
+                                                         tags$td("Information on how to conduct the Validation step")
                                                        ),
 
                                                        tags$tr(
-                                                         tags$td(tags$code("References")),
-                                                         tags$td("Reference to further literature and information")
+                                                         tags$td(tags$code("Source / References")),
+                                                         tags$td("Additional Literature")
                                                        )
+
+
                                           )),
                                         p("To use the checklist in your research just click on",tags$b("Get Started")," in the navigation bar.
-                      There, you can generate your own checklist depending on the type of text method used. Furthermore, you will be able to
-                      download a Word template which you can fill out on your own and attach to your publication."),
+                      There, you can generate your own checklist depending on the use case applied. Furthermore, you will be able to
+                      download a template which you can fill out on your own and attach to your analysis."),
                                         div(tags$img(src = "www/checklist.png", id = "myimagecheck", style = "margin-top: 40px;margin-bottom: 40px; cursor: pointer;"),
                                             p(class = "caption", "Figure 2: Screenshot Checklist (click to expand)")),)),
                                       div(class = "footer",
@@ -127,14 +122,14 @@ app_ui <- function(request) {
                                     h3("User Instructions"),
                                     p(HTML(paste("This application generates an adaptable checklist that you can use to validate your text-based measures.
                 Each row within the table corresponds to one validation step (i.e., a single reported and clearly demarcated validation activity). Validation steps can be either ",
-                                                 span(style="color:#ed969e; font-weight: bold", "recommended "), "or ",
-                                                 span(style="color:#96caed; font-weight: bold", "optional "),"depending on their relevance.", sep = "")),
+                                                 span(style="color:#ed969e; font-weight: bold", "context-independent "), "or ",
+                                                 span(style="color:#96caed; font-weight: bold", "context-dependent."), sep = "")),
                                       # tags$img(
                                       #   src = "www/use_cases.png",
                                       #   style = "display: block; margin: 0 auto; width: 50%;"
                                       # ),
-                                      p("ValiTex accounts for different use cases in validation practices across text-based methods and research contexts.
-                                        At present, ValiTex differentiates between seven use cases, which are highlighted in the Table below (click on it for a detailed view)"),
+                                      p("ValiText accounts for different use cases in validation practices across text-based methods and research contexts.
+                                        At present, ValiTex differentiates between four use cases, which are highlighted in the Table below (click on it for a detailed view)"),
                                       div(
                                         tags$img(src = "www/use_cases.png", id = "myimage", style = "margin-top: 40px;margin-bottom: 0px; cursor: pointer;"),
                                         p(class = "caption", "Table: Use Cases (click to expand)")),
@@ -152,13 +147,10 @@ app_ui <- function(request) {
                                                      # Input: Choose dataset
                                                      selectInput("Method", "What text-based method do you want to validate? Please choose below:",
                                                                  choices = c("--Please select a method--",
-                                                                             "A. Applying Dictionaries",
-                                                                             "B. Classification using Traditional Supervised Machine Learning Model",
-                                                                             "C. Classification using Finetuned Machine-Learning Model",
-                                                                             "D. Zero-Shot/Few-Shot Classification (known output categories)",
-                                                                             "E. Zero-Shot/Few-Shot Classification (unknown output categories)",
-                                                                             "F. Text Scaling",
-                                                                             "G. Topic Modelling"),
+                                                                             "A. Dictionaries",
+                                                                             "B. (Semi-) Supervised Classification",
+                                                                             "C. Prompt-based classification using LLMs",
+                                                                             "D. Topic Modelling"),
                                                                  selected = ""),
 
 
@@ -252,8 +244,8 @@ app_ui <- function(request) {
                          To reach us, please refer to", a("lukas.birkenmaier@gesis.org",href = "lukas.birkenmaier@gesis.org")),
                                     h3("Citation"),
                                     p("When refering to the site or the corresponding workin paper in publications, please cite the following references:"),
-                                    p("Birkenmaier, Lukas; Lechner, Clemens; Wagner, Claudia. (2023).",
-                                      tags$em("ValiTex - a uniform validation framework for computational text-based measures of social science constructs."),
+                                    p("Birkenmaier, Lukas; Lechner, Clemens; Wagner, Claudia. (2024).",
+                                      tags$em("ValiTex - a uniform validation framework for computational text-based measures of social constructs."),
                                       a("https://doi.org/10.48550/arXiv.2307.02863",
                                         href = "https://doi.org/10.48550/arXiv.2307.02863",
                                         target = "_blank") ),
