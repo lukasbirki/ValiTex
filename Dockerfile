@@ -34,6 +34,12 @@ RUN mkdir /build_zone
 ADD . /build_zone
 WORKDIR /build_zone
 
+# Restore renv environment
+RUN R -e 'renv::restore()'
+
+# Ensure remotes is installed within renv
+RUN R -e 'install.packages("remotes")'
+
 # Install the local package
 RUN R -e 'remotes::install_local("/build_zone", upgrade = "never")'
 
